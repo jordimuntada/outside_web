@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Raleway:wght@300;400;500;600;700&display=swap');
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -12,7 +14,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 @layer utilities {
@@ -23,48 +25,73 @@ body {
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
+    /* Warm wood tones and natural palette */
+    --background: 36 33% 97%;
+    --foreground: 20 10% 20%;
+    
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 20 10% 20%;
+    
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
-    --primary: 36 43% 51%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 60 56% 91%;
-    --secondary-foreground: 25 32% 25%;
-    --muted: 60 56% 91%;
-    --muted-foreground: 25 32% 25%;
-    --accent: 60 56% 91%;
-    --accent-foreground: 25 32% 25%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 60 56% 91%;
-    --border: 39 69% 86%;
-    --input: 39 69% 86%;
-    --ring: 36 43% 51%;
-    --radius: 0;
+    --popover-foreground: 20 10% 20%;
+    
+    /* Primary: Warm brown */
+    --primary: 25 30% 28%;
+    --primary-foreground: 36 33% 97%;
+    
+    /* Secondary: Soft beige */
+    --secondary: 33 43% 90%;
+    --secondary-foreground: 25 30% 28%;
+    
+    /* Accent: Warm wood tone */
+    --accent: 35 50% 64%;
+    --accent-foreground: 20 10% 20%;
+    
+    /* Muted: Soft beige */
+    --muted: 33 43% 90%;
+    --muted-foreground: 25 30% 28%;
+    
+    /* Destructive: Muted red */
+    --destructive: 0 65% 52%;
+    --destructive-foreground: 36 33% 97%;
+    
+    /* Border: Soft beige */
+    --border: 33 43% 85%;
+    --input: 33 43% 85%;
+    --ring: 35 50% 64%;
+    
+    /* Rounded corners */
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 0 0% 5%;
-    --foreground: 60 56% 91%;
-    --card: 0 0% 5%;
-    --card-foreground: 60 56% 91%;
-    --popover: 0 0% 5%;
-    --popover-foreground: 60 56% 91%;
-    --primary: 36 43% 51%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 60 56% 91%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 39 69% 86%;
-    --accent: 0 0% 15%;
-    --accent-foreground: 60 56% 91%;
+    --background: 20 10% 10%;
+    --foreground: 36 33% 97%;
+    
+    --card: 20 10% 12%;
+    --card-foreground: 36 33% 97%;
+    
+    --popover: 20 10% 12%;
+    --popover-foreground: 36 33% 97%;
+    
+    --primary: 35 50% 64%;
+    --primary-foreground: 20 10% 10%;
+    
+    --secondary: 25 30% 20%;
+    --secondary-foreground: 36 33% 97%;
+    
+    --accent: 25 30% 28%;
+    --accent-foreground: 36 33% 97%;
+    
+    --muted: 25 30% 20%;
+    --muted-foreground: 36 33% 80%;
+    
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 60 56% 91%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 36 43% 51%;
+    --destructive-foreground: 36 33% 97%;
+    
+    --border: 25 30% 25%;
+    --input: 25 30% 25%;
+    --ring: 35 50% 64%;
   }
 }
 
@@ -74,6 +101,10 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Raleway', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium text-primary;
   }
 }
 
@@ -82,94 +113,94 @@ body {
     @apply mx-auto px-4 md:px-6 lg:px-8 max-w-7xl w-full;
   }
   
-  /* Custom Tesla-like styles */
-  .tesla-section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  /* Button styles with smooth transitions */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors 
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
+    disabled:opacity-50 disabled:pointer-events-none;
   }
   
-  .tesla-button {
-    display: inline-block;
-    padding: 0.75rem 2.5rem;
-    font-size: 1rem;
-    font-weight: 500;
-    text-align: center;
-    border-radius: 0.25rem;
-    transition: all 0.3s ease;
+  .btn-primary {
+    @apply bg-accent text-accent-foreground hover:bg-accent/90 active:bg-accent/80 
+    transition-all duration-300 ease-in-out;
   }
   
-  .tesla-button-primary {
-    background-color: #D4A373;
-    color: white;
-    border: 2px solid #D4A373;
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 active:bg-secondary/70
+    transition-all duration-300 ease-in-out;
   }
   
-  .tesla-button-primary:hover {
-    background-color: #C39B6A;
-    border-color: #C39B6A;
+  .btn-outline {
+    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground
+    transition-all duration-300 ease-in-out;
   }
   
-  .tesla-button-secondary {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: white;
-    border: 2px solid white;
-    backdrop-filter: blur(4px);
+  /* Link styles with clear hover states */
+  .link {
+    @apply text-primary underline-offset-4 hover:underline focus:outline-none focus:ring-2 
+    focus:ring-accent focus:ring-offset-2 transition-all duration-300;
   }
   
-  .tesla-button-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+  /* Card styles with subtle shadows */
+  .card {
+    @apply rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow duration-300;
   }
   
-  .tesla-heading {
-    font-size: 2.5rem;
-    line-height: 1.2;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
+  /* Section styles */
+  .section {
+    @apply py-12 md:py-16 lg:py-20;
   }
-
-  @media (min-width: 768px) {
-    .tesla-heading {
-      font-size: 3.5rem;
-    }
+  
+  /* Hero section styles */
+  .hero-section {
+    @apply relative py-16 md:py-24 lg:py-32 bg-secondary/30;
   }
-
-  @media (min-width: 1024px) {
-    .tesla-heading {
-      font-size: 4rem;
-    }
-  }
-
-  .tesla-subheading {
-    font-size: 1.25rem;
-    line-height: 1.5;
-    margin-bottom: 2rem;
-  }
-
-  .tesla-section {
-    @apply py-24 flex items-center justify-center relative overflow-hidden;
-  }
-
-  .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 1;
-  }
-
+  
   .hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    @apply animate-fade-in-up;
+    @apply max-w-4xl mx-auto text-center;
   }
-
+  
+  /* Service card styles */
+  .service-card {
+    @apply p-6 rounded-lg bg-white border border-border shadow-sm hover:shadow-md transition-all duration-300;
+  }
+  
+  /* Form styles */
+  .form-input {
+    @apply w-full px-4 py-2 rounded-md border border-input bg-background text-foreground
+    focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1 transition-all duration-300;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-foreground mb-1;
+  }
+  
+  .form-error {
+    @apply text-destructive text-sm mt-1;
+  }
+  
+  /* Accessibility improvements */
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+  }
+  
+  /* Animation classes */
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease forwards;
+  }
+  
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .animate-delay-600 {
+    animation-delay: 600ms;
+  }
+  
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -179,22 +210,6 @@ body {
       opacity: 1;
       transform: translateY(0);
     }
-  }
-
-  .animate-fade-in-up {
-    animation: fadeInUp 1s ease forwards;
-  }
-
-  .animate-delay-200 {
-    animation-delay: 200ms;
-  }
-
-  .animate-delay-400 {
-    animation-delay: 400ms;
-  }
-
-  .animate-delay-600 {
-    animation-delay: 600ms;
   }
 }
 
@@ -208,6 +223,7 @@ body {
 /* RTL support for Arabic */
 [dir='rtl'] {
   text-align: right;
+  font-family: 'Tajawal', sans-serif;
 }
 
 [dir='rtl'] .flex-row {
@@ -217,48 +233,82 @@ body {
 [dir='rtl'] .space-x-1 > :not([hidden]) ~ :not([hidden]),
 [dir='rtl'] .space-x-2 > :not([hidden]) ~ :not([hidden]),
 [dir='rtl'] .space-x-4 > :not([hidden]) ~ :not([hidden]),
-[dir='rtl'] .space-x-6 > :not([hidden]) ~ :not([hidden]) {
+[dir='rtl'] .space-x-6 > :not([hidden]) ~ :not([hidden]),
+[dir='rtl'] .space-x-8 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 1;
 }
 
 [dir='rtl'] .mr-2,
+[dir='rtl'] .mr-3,
 [dir='rtl'] .mr-4,
 [dir='rtl'] .mr-8 {
   margin-right: 0;
+}
+
+[dir='rtl'] .mr-2 {
   margin-left: 0.5rem;
+}
+
+[dir='rtl'] .mr-3 {
+  margin-left: 0.75rem;
+}
+
+[dir='rtl'] .mr-4 {
   margin-left: 1rem;
+}
+
+[dir='rtl'] .mr-8 {
   margin-left: 2rem;
 }
 
-[dir='rtl'] .ml-2 {
+[dir='rtl'] .ml-2,
+[dir='rtl'] .ml-3,
+[dir='rtl'] .ml-4 {
   margin-left: 0;
+}
+
+[dir='rtl'] .ml-2 {
   margin-right: 0.5rem;
+}
+
+[dir='rtl'] .ml-3 {
+  margin-right: 0.75rem;
+}
+
+[dir='rtl'] .ml-4 {
+  margin-right: 1rem;
 }
 
 /* Accessibility improvements */
 :focus {
-  outline: 2px solid #D4A373;
+  outline: 2px solid hsl(var(--accent));
   outline-offset: 2px;
 }
 
 a:focus, button:focus, input:focus, textarea:focus, select:focus {
-  outline: 2px solid #D4A373;
+  outline: 2px solid hsl(var(--accent));
   outline-offset: 2px;
 }
 
 /* High contrast text colors for better readability */
 .text-primary {
-  color: #5C4033;
+  color: hsl(var(--primary));
 }
 
 .text-secondary {
-  color: #D4A373;
+  color: hsl(var(--accent));
 }
 
 .text-body {
-  color: #333333;
+  color: hsl(var(--foreground));
 }
 
 .text-muted {
-  color: #666666;
+  color: hsl(var(--muted-foreground));
+}
+
+/* Skip to content link for accessibility */
+.skip-to-content {
+  @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50
+  bg-background px-4 py-2 text-sm font-medium text-foreground;
 }

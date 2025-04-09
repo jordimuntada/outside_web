@@ -34,17 +34,17 @@ export default function ContactForm() {
     } = {};
     
     if (!formData.name.trim()) {
-      newErrors.name = 'Este campo es obligatorio';
+      newErrors.name = t('formRequiredField');
     }
     
     if (!formData.email.trim()) {
-      newErrors.email = 'Este campo es obligatorio';
+      newErrors.email = t('formRequiredField');
     } else if (!validateEmail(formData.email)) {
-      newErrors.email = 'La dirección de correo electrónico no es válida';
+      newErrors.email = t('formInvalidEmail');
     }
     
     if (!formData.consent) {
-      newErrors.consent = 'Este campo es obligatorio';
+      newErrors.consent = t('formRequiredField');
     }
     
     setErrors(newErrors);
@@ -82,23 +82,23 @@ export default function ContactForm() {
   };
 
   return (
-    <div className='bg-white rounded-lg shadow-md p-6 md:p-8' dir={dir}>
+    <div className='bg-white rounded-lg shadow-md p-6 md:p-8 card' dir={dir}>
       {formStatus === 'success' ? (
         <div className='text-center py-8'>
-          <div className='text-5xl mb-4'>✅</div>
-          <h3 className='text-2xl font-bold text-green-600 mb-4'>¡Gracias! Nos pondremos en contacto lo antes posible.</h3>
+          <div className='text-5xl mb-4 text-accent'>✅</div>
+          <h3 className='text-2xl font-bold text-primary mb-4'>{t('formSuccess')}</h3>
           <button
             onClick={() => setFormStatus('idle')}
-            className='mt-4 bg-[#D4A373] hover:bg-[#C39B6A] active:bg-[#B38E60] text-white px-4 py-2 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-[#D4A373] focus:ring-offset-2'
+            className='mt-4 btn btn-primary px-6 py-2 rounded-md'
           >
-            Solicitar presupuesto
+            {t('formSubmit')}
           </button>
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
           <div className='mb-6'>
-            <label htmlFor='name' className='block text-gray-800 font-medium mb-2'>
-              Nombre *
+            <label htmlFor='name' className='form-label'>
+              {t('formName')} *
             </label>
             <input
               type='text'
@@ -106,18 +106,18 @@ export default function ContactForm() {
               name='name'
               value={formData.name}
               onChange={handleChange}
-              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
-                errors.name ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-[#D4A373]'
+              className={`form-input ${
+                errors.name ? 'border-destructive focus:ring-destructive/50' : ''
               }`}
               aria-invalid={errors.name ? 'true' : 'false'}
               aria-describedby={errors.name ? 'name-error' : undefined}
             />
-            {errors.name && <p id='name-error' className='text-red-600 text-sm mt-1'>{errors.name}</p>}
+            {errors.name && <p id='name-error' className='form-error'>{errors.name}</p>}
           </div>
           
           <div className='mb-6'>
-            <label htmlFor='email' className='block text-gray-800 font-medium mb-2'>
-              Email *
+            <label htmlFor='email' className='form-label'>
+              {t('formEmail')} *
             </label>
             <input
               type='email'
@@ -125,18 +125,18 @@ export default function ContactForm() {
               name='email'
               value={formData.email}
               onChange={handleChange}
-              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
-                errors.email ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-[#D4A373]'
+              className={`form-input ${
+                errors.email ? 'border-destructive focus:ring-destructive/50' : ''
               }`}
               aria-invalid={errors.email ? 'true' : 'false'}
               aria-describedby={errors.email ? 'email-error' : undefined}
             />
-            {errors.email && <p id='email-error' className='text-red-600 text-sm mt-1'>{errors.email}</p>}
+            {errors.email && <p id='email-error' className='form-error'>{errors.email}</p>}
           </div>
           
           <div className='mb-6'>
-            <label htmlFor='message' className='block text-gray-800 font-medium mb-2'>
-              Mensaje
+            <label htmlFor='message' className='form-label'>
+              {t('formMessage')}
             </label>
             <textarea
               id='message'
@@ -144,7 +144,7 @@ export default function ContactForm() {
               value={formData.message}
               onChange={handleChange}
               rows={5}
-              className='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#D4A373]'
+              className='form-input'
             ></textarea>
           </div>
           
@@ -156,31 +156,30 @@ export default function ContactForm() {
                 name='consent'
                 checked={formData.consent}
                 onChange={handleCheckboxChange}
-                className='mt-1 h-4 w-4 text-[#D4A373] focus:ring-[#D4A373] border-gray-300 rounded'
+                className='mt-1 h-4 w-4 text-accent focus:ring-accent border-input rounded'
                 aria-invalid={errors.consent ? 'true' : 'false'}
                 aria-describedby={errors.consent ? 'consent-error' : undefined}
               />
-              <label htmlFor='consent' className='ml-2 text-gray-800 text-sm'>
-                Estoy de acuerdo en que estos datos se almacenen y procesen con el fin de establecer contacto. Soy consciente de que puedo revocar mi consentimiento en cualquier momento. *
+              <label htmlFor='consent' className='ml-2 text-sm text-foreground/80'>
+                {t('formConsent')} *
               </label>
             </div>
-            {errors.consent && <p id='consent-error' className='text-red-600 text-sm mt-1'>{errors.consent}</p>}
+            {errors.consent && <p id='consent-error' className='form-error'>{errors.consent}</p>}
           </div>
           
-          <p className='text-gray-600 text-sm mb-6'>* Indica los campos obligatorios</p>
+          <p className='text-foreground/60 text-sm mb-6'>{t('formRequired')}</p>
           
           <button
             type='submit'
             disabled={formStatus === 'submitting'}
-            className={`w-full bg-[#D4A373] hover:bg-[#C39B6A] active:bg-[#B38E60] text-white px-4 py-3 rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[#D4A373] focus:ring-offset-2 ${
-              formStatus === 'submitting' ? 'opacity-70 cursor-not-allowed' : ''
-            }`}
+            className='w-full btn btn-primary px-4 py-3 rounded-md font-medium shadow-md hover:shadow-lg transition-all duration-300'
+            aria-busy={formStatus === 'submitting'}
           >
-            {formStatus === 'submitting' ? '...' : 'Solicitar presupuesto'}
+            {formStatus === 'submitting' ? '...' : t('formSubmit')}
           </button>
           
           {formStatus === 'error' && (
-            <p className='text-red-600 text-center mt-4'>Hubo un error al enviar su mensaje. Por favor, inténtelo de nuevo.</p>
+            <p className='text-destructive text-center mt-4'>{t('formError')}</p>
           )}
         </form>
       )}

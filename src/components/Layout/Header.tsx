@@ -24,28 +24,31 @@ export default function Header() {
 
   return (
     <header className='bg-white shadow-sm sticky top-0 z-50' dir={dir}>
+      <a href='#main-content' className='skip-to-content'>
+        Saltar al contenido principal
+      </a>
       <div className='container mx-auto px-4'>
         <div className='flex items-center justify-between h-20'>
           <Link href='/' className='flex items-center'>
-            <span className='text-xl font-bold text-[#5C4033]'>Outside Instalaciones</span>
+            <span className='text-xl font-bold text-primary'>Outside Instalaciones</span>
           </Link>
 
           <nav className='hidden md:flex items-center space-x-8'>
             <Link 
               href='/' 
-              className={`text-gray-700 hover:text-[#D4A373] transition-colors ${isActive('/') ? 'font-medium text-[#D4A373]' : ''}`}
+              className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/') ? 'font-medium text-accent' : ''}`}
             >
               {t('home')}
             </Link>
             <Link 
               href='/contact' 
-              className={`text-gray-700 hover:text-[#D4A373] transition-colors ${isActive('/contact') ? 'font-medium text-[#D4A373]' : ''}`}
+              className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/contact') ? 'font-medium text-accent' : ''}`}
             >
               {t('contact')}
             </Link>
             <Link 
               href='/legal' 
-              className={`text-gray-700 hover:text-[#D4A373] transition-colors ${isActive('/legal') ? 'font-medium text-[#D4A373]' : ''}`}
+              className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/legal') ? 'font-medium text-accent' : ''}`}
             >
               {t('legal')}
             </Link>
@@ -57,9 +60,10 @@ export default function Header() {
             </div>
             
             <button 
-              className='md:hidden text-gray-700 focus:outline-none'
+              className='md:hidden text-foreground focus:outline-none focus:ring-2 focus:ring-accent rounded-md p-1'
               onClick={toggleMenu}
               aria-label='Toggle menu'
+              aria-expanded={isMenuOpen}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -69,26 +73,26 @@ export default function Header() {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className='md:hidden bg-white border-t border-gray-200'>
+        <div className='md:hidden bg-white border-t border-border'>
           <div className='container mx-auto px-4 py-4'>
             <nav className='flex flex-col space-y-4'>
               <Link 
                 href='/' 
-                className={`text-gray-700 hover:text-[#D4A373] transition-colors ${isActive('/') ? 'font-medium text-[#D4A373]' : ''}`}
+                className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/') ? 'font-medium text-accent' : ''}`}
                 onClick={closeMenu}
               >
                 {t('home')}
               </Link>
               <Link 
                 href='/contact' 
-                className={`text-gray-700 hover:text-[#D4A373] transition-colors ${isActive('/contact') ? 'font-medium text-[#D4A373]' : ''}`}
+                className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/contact') ? 'font-medium text-accent' : ''}`}
                 onClick={closeMenu}
               >
                 {t('contact')}
               </Link>
               <Link 
                 href='/legal' 
-                className={`text-gray-700 hover:text-[#D4A373] transition-colors ${isActive('/legal') ? 'font-medium text-[#D4A373]' : ''}`}
+                className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/legal') ? 'font-medium text-accent' : ''}`}
                 onClick={closeMenu}
               >
                 {t('legal')}
