@@ -82,51 +82,107 @@ body {
     @apply mx-auto px-4 md:px-6 lg:px-8 max-w-7xl w-full;
   }
   
+  /* Custom Tesla-like styles */
+  .tesla-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
   .tesla-button {
-    @apply px-6 py-3 rounded text-sm uppercase tracking-wider font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D4A373] transform hover:scale-105 shadow-md;
+    display: inline-block;
+    padding: 0.75rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
   }
   
   .tesla-button-primary {
-    @apply bg-[#D4A373] text-white hover:bg-[#C39B6A] active:bg-[#B38E60] hover:shadow-lg;
+    background-color: #D4A373;
+    color: white;
+    border: 2px solid #D4A373;
+  }
+  
+  .tesla-button-primary:hover {
+    background-color: #C39B6A;
+    border-color: #C39B6A;
   }
   
   .tesla-button-secondary {
-    @apply bg-white/90 text-[#5C4033] hover:bg-white active:bg-[#FAEDCD] border border-[#D4A373] backdrop-blur-sm hover:shadow-lg;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    backdrop-filter: blur(4px);
   }
   
-  .tesla-section {
-    @apply py-24 min-h-[90vh] flex items-center justify-center relative overflow-hidden;
+  .tesla-button-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.3);
   }
   
   .tesla-heading {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight drop-shadow-md;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
   }
-  
+
+  @media (min-width: 768px) {
+    .tesla-heading {
+      font-size: 3.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .tesla-heading {
+      font-size: 4rem;
+    }
+  }
+
   .tesla-subheading {
-    @apply text-lg md:text-xl font-light tracking-wide mt-4 drop-shadow-md;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+
+  .tesla-section {
+    @apply py-24 flex items-center justify-center relative overflow-hidden;
   }
 
   .hero-overlay {
-    @apply absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
   }
 
   .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
     @apply animate-fade-in-up;
   }
 
-  @keyframes fade-in-up {
-    0% {
+  @keyframes fadeInUp {
+    from {
       opacity: 0;
       transform: translateY(20px);
     }
-    100% {
+    to {
       opacity: 1;
       transform: translateY(0);
     }
   }
 
   .animate-fade-in-up {
-    animation: fade-in-up 0.8s ease-out forwards;
+    animation: fadeInUp 1s ease forwards;
   }
 
   .animate-delay-200 {

@@ -34,17 +34,17 @@ export default function ContactForm() {
     } = {};
     
     if (!formData.name.trim()) {
-      newErrors.name = t('formRequiredField');
+      newErrors.name = 'Este campo es obligatorio';
     }
     
     if (!formData.email.trim()) {
-      newErrors.email = t('formRequiredField');
+      newErrors.email = 'Este campo es obligatorio';
     } else if (!validateEmail(formData.email)) {
-      newErrors.email = t('formInvalidEmail');
+      newErrors.email = 'La dirección de correo electrónico no es válida';
     }
     
     if (!formData.consent) {
-      newErrors.consent = t('formRequiredField');
+      newErrors.consent = 'Este campo es obligatorio';
     }
     
     setErrors(newErrors);
@@ -86,19 +86,19 @@ export default function ContactForm() {
       {formStatus === 'success' ? (
         <div className='text-center py-8'>
           <div className='text-5xl mb-4'>✅</div>
-          <h3 className='text-2xl font-bold text-green-600 mb-4'>{t('formSuccess')}</h3>
+          <h3 className='text-2xl font-bold text-green-600 mb-4'>¡Gracias! Nos pondremos en contacto lo antes posible.</h3>
           <button
             onClick={() => setFormStatus('idle')}
             className='mt-4 bg-[#D4A373] hover:bg-[#C39B6A] active:bg-[#B38E60] text-white px-4 py-2 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-[#D4A373] focus:ring-offset-2'
           >
-            {t('formSubmit')}
+            Solicitar presupuesto
           </button>
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
           <div className='mb-6'>
             <label htmlFor='name' className='block text-gray-800 font-medium mb-2'>
-              {t('formName')} *
+              Nombre *
             </label>
             <input
               type='text'
@@ -117,7 +117,7 @@ export default function ContactForm() {
           
           <div className='mb-6'>
             <label htmlFor='email' className='block text-gray-800 font-medium mb-2'>
-              {t('formEmail')} *
+              Email *
             </label>
             <input
               type='email'
@@ -136,7 +136,7 @@ export default function ContactForm() {
           
           <div className='mb-6'>
             <label htmlFor='message' className='block text-gray-800 font-medium mb-2'>
-              {t('formMessage')}
+              Mensaje
             </label>
             <textarea
               id='message'
@@ -160,14 +160,14 @@ export default function ContactForm() {
                 aria-invalid={errors.consent ? 'true' : 'false'}
                 aria-describedby={errors.consent ? 'consent-error' : undefined}
               />
-              <label htmlFor='consent' className='ml-2 text-gray-800'>
-                {t('formConsent')} *
+              <label htmlFor='consent' className='ml-2 text-gray-800 text-sm'>
+                Estoy de acuerdo en que estos datos se almacenen y procesen con el fin de establecer contacto. Soy consciente de que puedo revocar mi consentimiento en cualquier momento. *
               </label>
             </div>
             {errors.consent && <p id='consent-error' className='text-red-600 text-sm mt-1'>{errors.consent}</p>}
           </div>
           
-          <p className='text-gray-600 text-sm mb-6'>{t('formRequired')}</p>
+          <p className='text-gray-600 text-sm mb-6'>* Indica los campos obligatorios</p>
           
           <button
             type='submit'
@@ -176,11 +176,11 @@ export default function ContactForm() {
               formStatus === 'submitting' ? 'opacity-70 cursor-not-allowed' : ''
             }`}
           >
-            {formStatus === 'submitting' ? '...' : t('formSubmit')}
+            {formStatus === 'submitting' ? '...' : 'Solicitar presupuesto'}
           </button>
           
           {formStatus === 'error' && (
-            <p className='text-red-600 text-center mt-4'>{t('formError')}</p>
+            <p className='text-red-600 text-center mt-4'>Hubo un error al enviar su mensaje. Por favor, inténtelo de nuevo.</p>
           )}
         </form>
       )}
