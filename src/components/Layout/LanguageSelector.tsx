@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Language } from "@/lib/translations";
@@ -8,7 +7,7 @@ export default function LanguageSelector() {
 
   const languages: { code: Language; name: string; flag: string }[] = [
     { code: "es", name: "Español", flag: "🇪🇸" },
-    { code: "ca", name: "Català", flag: "🏴󠁥󠁳󠁣󠁴󠁿" },
+    { code: "ca", name: "Català", flag: "🏴" },
     { code: "en", name: "English", flag: "🇬🇧" },
     { code: "ar", name: "العربية", flag: "🇸🇦" }
   ];

@@ -16,13 +16,16 @@ export default function AboutSection() {
               <p className='text-gray-800 mb-6 text-lg'>{t('aboutDescription1')}</p>
               <p className='text-gray-800 mb-6 text-lg'>{t('aboutDescription2')}</p>
               <p className='text-gray-800 mb-8 text-lg'>{t('aboutDescription3')}</p>
-              <Link href='/about' className='tesla-button tesla-button-primary inline-block'>
+              <Link 
+                href='/about' 
+                className='tesla-button tesla-button-primary inline-block rounded-md focus:outline-none focus:ring-2 focus:ring-[#D4A373] focus:ring-offset-2'
+              >
                 {t('about')}
               </Link>
             </div>
             
             <div>
-              <div className='aspect-w-4 aspect-h-3 overflow-hidden shadow-md'>
+              <div className='aspect-w-4 aspect-h-3 overflow-hidden shadow-md rounded-md'>
                 <img 
                   src='https://images.pexels.com/photos/1094767/pexels-photo-1094767.jpeg?auto=compress&cs=tinysrgb&w=800' 
                   alt='Carpenter working on wooden furniture' 

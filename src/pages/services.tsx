@@ -59,7 +59,10 @@ export default function ServicesPage() {
                   <h2 className='text-2xl font-bold text-[#5C4033] mb-4'>{service.title}</h2>
                   <p className='text-gray-800 mb-4'>{service.description}</p>
                   <p className='text-gray-800 mb-6'>{service.extendedDescription}</p>
-                  <Link href='/contact' className='inline-block bg-[#D4A373] hover:bg-[#CCD5AE] text-white px-5 py-2 rounded-md font-medium transition-colors'>
+                  <Link 
+                    href='/contact' 
+                    className='inline-block bg-[#D4A373] hover:bg-[#C39B6A] active:bg-[#B38E60] text-white px-5 py-2 rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[#D4A373] focus:ring-offset-2'
+                  >
                     {t('requestQuote')}
                   </Link>
                 </div>
@@ -85,7 +88,10 @@ export default function ServicesPage() {
           <p className='text-lg max-w-2xl mx-auto mb-8'>
             {t('passionDescription')}
           </p>
-          <Link href='/contact' className='inline-block bg-white text-[#5C4033] hover:bg-[#FEFAE0] px-6 py-3 rounded-md text-lg font-medium transition-colors'>
+          <Link 
+            href='/contact' 
+            className='inline-block bg-white text-[#5C4033] hover:bg-[#FEFAE0] active:bg-[#FAEDCD] px-6 py-3 rounded-md text-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#D4A373]'
+          >
             {t('requestQuote')}
           </Link>
         </div>

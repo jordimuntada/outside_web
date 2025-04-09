@@ -48,6 +48,7 @@ export default function ContactPage() {
                   loading='lazy'
                   referrerPolicy='no-referrer-when-downgrade'
                   title='Outside Instalaciones location'
+                  className='rounded-md focus:outline-none focus:ring-2 focus:ring-[#D4A373]'
                 ></iframe>
               </div>
             </div>

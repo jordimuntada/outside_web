@@ -1,4 +1,3 @@
-
 import React from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -14,7 +13,7 @@ export default function CTASection() {
       }}
       dir={dir}
     >
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-black/60"></div>
       <div className="container mx-auto px-4 relative z-10 text-center text-white">
         <h2 className="text-3xl md:text-4xl font-medium mb-6">{t("passionTitle")}</h2>
         <p className="text-lg max-w-2xl mx-auto mb-8">

@@ -1,4 +1,3 @@
-
 import React from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -15,7 +14,7 @@ export default function Hero() {
       }}
       dir={dir}
     >
-      <div className="absolute inset-0 bg-black/30"></div>
+      <div className="absolute inset-0 bg-black/50"></div>
       <div className="container relative z-10 text-center text-white">
         <h1 className="tesla-heading mb-4">
           {t("expertTitle")}

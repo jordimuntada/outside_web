@@ -89,7 +89,7 @@ export default function ContactForm() {
           <h3 className='text-2xl font-bold text-green-600 mb-4'>{t('formSuccess')}</h3>
           <button
             onClick={() => setFormStatus('idle')}
-            className='mt-4 bg-[#D4A373] hover:bg-[#CCD5AE] text-white px-4 py-2 rounded-md transition-colors'
+            className='mt-4 bg-[#D4A373] hover:bg-[#C39B6A] active:bg-[#B38E60] text-white px-4 py-2 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-[#D4A373] focus:ring-offset-2'
           >
             {t('formSubmit')}
           </button>
@@ -107,10 +107,12 @@ export default function ContactForm() {
               value={formData.name}
               onChange={handleChange}
               className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
-                errors.name ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-[#FAEDCD]'
+                errors.name ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-[#D4A373]'
               }`}
+              aria-invalid={errors.name ? 'true' : 'false'}
+              aria-describedby={errors.name ? 'name-error' : undefined}
             />
-            {errors.name && <p className='text-red-600 text-sm mt-1'>{errors.name}</p>}
+            {errors.name && <p id='name-error' className='text-red-600 text-sm mt-1'>{errors.name}</p>}
           </div>
           
           <div className='mb-6'>
@@ -124,10 +126,12 @@ export default function ContactForm() {
               value={formData.email}
               onChange={handleChange}
               className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
-                errors.email ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-[#FAEDCD]'
+                errors.email ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-[#D4A373]'
               }`}
+              aria-invalid={errors.email ? 'true' : 'false'}
+              aria-describedby={errors.email ? 'email-error' : undefined}
             />
-            {errors.email && <p className='text-red-600 text-sm mt-1'>{errors.email}</p>}
+            {errors.email && <p id='email-error' className='text-red-600 text-sm mt-1'>{errors.email}</p>}
           </div>
           
           <div className='mb-6'>
@@ -140,7 +144,7 @@ export default function ContactForm() {
               value={formData.message}
               onChange={handleChange}
               rows={5}
-              className='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FAEDCD]'
+              className='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#D4A373]'
             ></textarea>
           </div>
           
@@ -152,13 +156,15 @@ export default function ContactForm() {
                 name='consent'
                 checked={formData.consent}
                 onChange={handleCheckboxChange}
-                className='mt-1'
+                className='mt-1 h-4 w-4 text-[#D4A373] focus:ring-[#D4A373] border-gray-300 rounded'
+                aria-invalid={errors.consent ? 'true' : 'false'}
+                aria-describedby={errors.consent ? 'consent-error' : undefined}
               />
               <label htmlFor='consent' className='ml-2 text-gray-800'>
                 {t('formConsent')} *
               </label>
             </div>
-            {errors.consent && <p className='text-red-600 text-sm mt-1'>{errors.consent}</p>}
+            {errors.consent && <p id='consent-error' className='text-red-600 text-sm mt-1'>{errors.consent}</p>}
           </div>
           
           <p className='text-gray-600 text-sm mb-6'>{t('formRequired')}</p>
@@ -166,7 +172,7 @@ export default function ContactForm() {
           <button
             type='submit'
             disabled={formStatus === 'submitting'}
-            className={`w-full bg-[#D4A373] hover:bg-[#CCD5AE] text-white px-4 py-3 rounded-md font-medium transition-colors ${
+            className={`w-full bg-[#D4A373] hover:bg-[#C39B6A] active:bg-[#B38E60] text-white px-4 py-3 rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[#D4A373] focus:ring-offset-2 ${
               formStatus === 'submitting' ? 'opacity-70 cursor-not-allowed' : ''
             }`}
           >

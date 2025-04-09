@@ -49,7 +49,10 @@ export default function AboutPage() {
           <p className='text-lg max-w-2xl mx-auto mb-8'>
             {t('passionDescription')}
           </p>
-          <Link href='/contact' className='inline-block bg-white text-[#5C4033] hover:bg-[#FEFAE0] px-6 py-3 rounded-md text-lg font-medium transition-colors'>
+          <Link 
+            href='/contact' 
+            className='inline-block bg-white text-[#5C4033] hover:bg-[#FEFAE0] active:bg-[#FAEDCD] px-6 py-3 rounded-md text-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#D4A373]'
+          >
             {t('requestQuote')}
           </Link>
         </div>

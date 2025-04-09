@@ -30,13 +30,13 @@ body {
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
     --primary: 36 43% 51%;
-    --primary-foreground: 60 56% 91%;
+    --primary-foreground: 0 0% 100%;
     --secondary: 60 56% 91%;
-    --secondary-foreground: 36 43% 51%;
+    --secondary-foreground: 25 32% 25%;
     --muted: 60 56% 91%;
-    --muted-foreground: 36 43% 51%;
+    --muted-foreground: 25 32% 25%;
     --accent: 60 56% 91%;
-    --accent-foreground: 36 43% 51%;
+    --accent-foreground: 25 32% 25%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 60 56% 91%;
     --border: 39 69% 86%;
@@ -53,7 +53,7 @@ body {
     --popover: 0 0% 5%;
     --popover-foreground: 60 56% 91%;
     --primary: 36 43% 51%;
-    --primary-foreground: 60 56% 91%;
+    --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 10%;
     --secondary-foreground: 60 56% 91%;
     --muted: 0 0% 15%;
@@ -83,15 +83,15 @@ body {
   }
   
   .tesla-button {
-    @apply px-6 py-2 rounded-none text-sm uppercase tracking-wider font-medium transition-colors;
+    @apply px-6 py-2 rounded-none text-sm uppercase tracking-wider font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D4A373];
   }
   
   .tesla-button-primary {
-    @apply bg-[#D4A373] text-white hover:bg-[#D4A373]/90;
+    @apply bg-[#D4A373] text-white hover:bg-[#C39B6A] active:bg-[#B38E60];
   }
   
   .tesla-button-secondary {
-    @apply bg-white text-[#D4A373] hover:bg-white/90 border border-[#D4A373];
+    @apply bg-white text-[#5C4033] hover:bg-[#FEFAE0] active:bg-[#FAEDCD] border border-[#D4A373];
   }
   
   .tesla-section {
@@ -142,4 +142,32 @@ body {
 [dir='rtl'] .ml-2 {
   margin-left: 0;
   margin-right: 0.5rem;
+}
+
+/* Accessibility improvements */
+:focus {
+  outline: 2px solid #D4A373;
+  outline-offset: 2px;
+}
+
+a:focus, button:focus, input:focus, textarea:focus, select:focus {
+  outline: 2px solid #D4A373;
+  outline-offset: 2px;
+}
+
+/* High contrast text colors for better readability */
+.text-primary {
+  color: #5C4033;
+}
+
+.text-secondary {
+  color: #D4A373;
+}
+
+.text-body {
+  color: #333333;
+}
+
+.text-muted {
+  color: #666666;
 }

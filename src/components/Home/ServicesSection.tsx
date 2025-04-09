@@ -33,7 +33,7 @@ export default function ServicesSection() {
         
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
           {services.map((service) => (
-            <div key={service.id} className='bg-white overflow-hidden group shadow-md'>
+            <div key={service.id} className='bg-white overflow-hidden group shadow-md rounded-md'>
               <div className='h-64 overflow-hidden'>
                 <img 
                   src={service.image} 
@@ -44,7 +44,10 @@ export default function ServicesSection() {
               <div className='p-6'>
                 <h3 className='text-xl font-medium mb-3 text-[#5C4033]'>{service.title}</h3>
                 <p className='text-gray-800 mb-4'>{service.description}</p>
-                <Link href={`/services#${service.id}`} className='text-[#D4A373] font-medium hover:underline'>
+                <Link 
+                  href={`/services#${service.id}`} 
+                  className='text-[#D4A373] font-medium hover:text-[#C39B6A] hover:underline focus:outline-none focus:ring-2 focus:ring-[#D4A373] rounded-sm'
+                >
                   {t('services')} →
                 </Link>
               </div>
@@ -53,7 +56,10 @@ export default function ServicesSection() {
         </div>
         
         <div className='text-center mt-12'>
-          <Link href='/services' className='tesla-button tesla-button-primary inline-block'>
+          <Link 
+            href='/services' 
+            className='tesla-button tesla-button-primary inline-block rounded-md focus:outline-none focus:ring-2 focus:ring-[#D4A373] focus:ring-offset-2 focus:ring-offset-[#FEFAE0]'
+          >
             {t('services')}
           </Link>
         </div>
