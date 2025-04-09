@@ -11,24 +11,24 @@ export default function ServicesSection() {
       id: "installation",
       title: t("installationTitle"),
       description: t("installationDescription"),
-      image: "https://images.unsplash.com/photo-1621544140639-77a76594999e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "https://images.pexels.com/photos/6474475/pexels-photo-6474475.jpeg?auto=compress&cs=tinysrgb&w=800"
     },
     {
       id: "repair",
       title: t("repairTitle"),
       description: t("repairDescription"),
-      image: "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "https://images.pexels.com/photos/3846022/pexels-photo-3846022.jpeg?auto=compress&cs=tinysrgb&w=800"
     },
     {
       id: "maintenance",
       title: t("maintenanceTitle"),
       description: t("maintenanceDescription"),
-      image: "https://images.unsplash.com/photo-1581244277943-fe4a9c777189?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "https://images.pexels.com/photos/4491881/pexels-photo-4491881.jpeg?auto=compress&cs=tinysrgb&w=800"
     }
   ];
 
   return (
-    <section className="py-20 bg-gray-50" dir={dir}>
+    <section className="py-20 bg-[#FEFAE0]" dir={dir}>
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-medium text-center mb-12">{t("servicesTitle")}</h2>
         
@@ -45,7 +45,7 @@ export default function ServicesSection() {
               <div className="p-6">
                 <h3 className="text-xl font-medium mb-3">{service.title}</h3>
                 <p className="text-gray-600 mb-4">{service.description}</p>
-                <Link href={`/services#${service.id}`} className="text-primary font-medium hover:underline">
+                <Link href={`/services#${service.id}`} className="text-[#D4A373] font-medium hover:underline">
                   {t("services")} →
                 </Link>
               </div>

@@ -10,7 +10,7 @@ export default function CTASection() {
     <section 
       className="py-24 bg-cover bg-center bg-no-repeat relative" 
       style={{ 
-        backgroundImage: "url('https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"
+        backgroundImage: "url('https://images.pexels.com/photos/6758773/pexels-photo-6758773.jpeg?auto=compress&cs=tinysrgb&w=1920')"
       }}
       dir={dir}
     >

@@ -25,7 +25,7 @@ export default function AboutSection() {
             <div>
               <div className="aspect-w-4 aspect-h-3 overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1567604130959-7a3d4563030a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  src="https://images.pexels.com/photos/1094767/pexels-photo-1094767.jpeg?auto=compress&cs=tinysrgb&w=800" 
                   alt="Carpenter working on wooden furniture" 
                   className="object-cover w-full h-full"
                 />

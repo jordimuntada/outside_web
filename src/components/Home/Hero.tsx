@@ -10,7 +10,7 @@ export default function Hero() {
     <section 
       className="tesla-section bg-cover bg-center bg-no-repeat" 
       style={{ 
-        backgroundImage: "url('https://images.unsplash.com/photo-1601564921647-b446839a013f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
+        backgroundImage: "url('https://images.pexels.com/photos/3637837/pexels-photo-3637837.jpeg?auto=compress&cs=tinysrgb&w=1920')",
         backgroundPosition: "center 30%"
       }}
       dir={dir}
