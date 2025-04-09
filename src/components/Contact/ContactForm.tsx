@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -6,9 +5,9 @@ export default function ContactForm() {
   const { t, dir } = useLanguage();
   
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
+    name: '',
+    email: '',
+    message: '',
     consent: false
   });
   
@@ -19,7 +18,7 @@ export default function ContactForm() {
     consent?: string;
   }>({});
   
-  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -35,17 +34,17 @@ export default function ContactForm() {
     } = {};
     
     if (!formData.name.trim()) {
-      newErrors.name = t("formRequiredField");
+      newErrors.name = t('formRequiredField');
     }
     
     if (!formData.email.trim()) {
-      newErrors.email = t("formRequiredField");
+      newErrors.email = t('formRequiredField');
     } else if (!validateEmail(formData.email)) {
-      newErrors.email = t("formInvalidEmail");
+      newErrors.email = t('formInvalidEmail');
     }
     
     if (!formData.consent) {
-      newErrors.consent = t("formRequiredField");
+      newErrors.consent = t('formRequiredField');
     }
     
     setErrors(newErrors);
@@ -69,113 +68,113 @@ export default function ContactForm() {
       return;
     }
     
-    setFormStatus("submitting");
+    setFormStatus('submitting');
     
     // Simulate form submission
     try {
       // In a real application, you would send the form data to your backend
       await new Promise(resolve => setTimeout(resolve, 1500));
-      setFormStatus("success");
-      setFormData({ name: "", email: "", message: "", consent: false });
+      setFormStatus('success');
+      setFormData({ name: '', email: '', message: '', consent: false });
     } catch (error) {
-      setFormStatus("error");
+      setFormStatus('error');
     }
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 md:p-8" dir={dir}>
-      {formStatus === "success" ? (
-        <div className="text-center py-8">
-          <div className="text-5xl mb-4">✅</div>
-          <h3 className="text-2xl font-bold text-green-600 mb-4">{t("formSuccess")}</h3>
+    <div className='bg-white rounded-lg shadow-md p-6 md:p-8' dir={dir}>
+      {formStatus === 'success' ? (
+        <div className='text-center py-8'>
+          <div className='text-5xl mb-4'>✅</div>
+          <h3 className='text-2xl font-bold text-green-600 mb-4'>{t('formSuccess')}</h3>
           <button
-            onClick={() => setFormStatus("idle")}
-            className="mt-4 bg-amber-700 hover:bg-amber-600 text-white px-4 py-2 rounded-md transition-colors"
+            onClick={() => setFormStatus('idle')}
+            className='mt-4 bg-[#D4A373] hover:bg-[#CCD5AE] text-white px-4 py-2 rounded-md transition-colors'
           >
-            {t("formSubmit")}
+            {t('formSubmit')}
           </button>
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
-          <div className="mb-6">
-            <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
-              {t("formName")} *
+          <div className='mb-6'>
+            <label htmlFor='name' className='block text-gray-800 font-medium mb-2'>
+              {t('formName')} *
             </label>
             <input
-              type="text"
-              id="name"
-              name="name"
+              type='text'
+              id='name'
+              name='name'
               value={formData.name}
               onChange={handleChange}
               className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
-                errors.name ? "border-red-500 focus:ring-red-200" : "border-gray-300 focus:ring-amber-200"
+                errors.name ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-[#FAEDCD]'
               }`}
             />
-            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+            {errors.name && <p className='text-red-600 text-sm mt-1'>{errors.name}</p>}
           </div>
           
-          <div className="mb-6">
-            <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
-              {t("formEmail")} *
+          <div className='mb-6'>
+            <label htmlFor='email' className='block text-gray-800 font-medium mb-2'>
+              {t('formEmail')} *
             </label>
             <input
-              type="email"
-              id="email"
-              name="email"
+              type='email'
+              id='email'
+              name='email'
               value={formData.email}
               onChange={handleChange}
               className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
-                errors.email ? "border-red-500 focus:ring-red-200" : "border-gray-300 focus:ring-amber-200"
+                errors.email ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-[#FAEDCD]'
               }`}
             />
-            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+            {errors.email && <p className='text-red-600 text-sm mt-1'>{errors.email}</p>}
           </div>
           
-          <div className="mb-6">
-            <label htmlFor="message" className="block text-gray-700 font-medium mb-2">
-              {t("formMessage")}
+          <div className='mb-6'>
+            <label htmlFor='message' className='block text-gray-800 font-medium mb-2'>
+              {t('formMessage')}
             </label>
             <textarea
-              id="message"
-              name="message"
+              id='message'
+              name='message'
               value={formData.message}
               onChange={handleChange}
               rows={5}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-200"
+              className='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FAEDCD]'
             ></textarea>
           </div>
           
-          <div className="mb-6">
-            <div className="flex items-start">
+          <div className='mb-6'>
+            <div className='flex items-start'>
               <input
-                type="checkbox"
-                id="consent"
-                name="consent"
+                type='checkbox'
+                id='consent'
+                name='consent'
                 checked={formData.consent}
                 onChange={handleCheckboxChange}
-                className="mt-1"
+                className='mt-1'
               />
-              <label htmlFor="consent" className="ml-2 text-gray-700">
-                {t("formConsent")} *
+              <label htmlFor='consent' className='ml-2 text-gray-800'>
+                {t('formConsent')} *
               </label>
             </div>
-            {errors.consent && <p className="text-red-500 text-sm mt-1">{errors.consent}</p>}
+            {errors.consent && <p className='text-red-600 text-sm mt-1'>{errors.consent}</p>}
           </div>
           
-          <p className="text-gray-500 text-sm mb-6">{t("formRequired")}</p>
+          <p className='text-gray-600 text-sm mb-6'>{t('formRequired')}</p>
           
           <button
-            type="submit"
-            disabled={formStatus === "submitting"}
-            className={`w-full bg-amber-700 hover:bg-amber-600 text-white px-4 py-3 rounded-md font-medium transition-colors ${
-              formStatus === "submitting" ? "opacity-70 cursor-not-allowed" : ""
+            type='submit'
+            disabled={formStatus === 'submitting'}
+            className={`w-full bg-[#D4A373] hover:bg-[#CCD5AE] text-white px-4 py-3 rounded-md font-medium transition-colors ${
+              formStatus === 'submitting' ? 'opacity-70 cursor-not-allowed' : ''
             }`}
           >
-            {formStatus === "submitting" ? "..." : t("formSubmit")}
+            {formStatus === 'submitting' ? '...' : t('formSubmit')}
           </button>
           
-          {formStatus === "error" && (
-            <p className="text-red-500 text-center mt-4">{t("formError")}</p>
+          {formStatus === 'error' && (
+            <p className='text-red-600 text-center mt-4'>{t('formError')}</p>
           )}
         </form>
       )}
