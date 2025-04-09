@@ -11,49 +11,41 @@ export default function ServicesSection() {
       id: "installation",
       title: t("installationTitle"),
       description: t("installationDescription"),
-      icon: "🔨",
-      image: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1621544140639-77a76594999e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
       id: "repair",
       title: t("repairTitle"),
       description: t("repairDescription"),
-      icon: "🔧",
-      image: "https://images.unsplash.com/photo-1588854337115-1c67d9247e4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
       id: "maintenance",
       title: t("maintenanceTitle"),
       description: t("maintenanceDescription"),
-      icon: "🧰",
-      image: "https://images.unsplash.com/photo-1598301257982-0cf014dabbcd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1581244277943-fe4a9c777189?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     }
   ];
 
   return (
-    <section className="py-16 bg-amber-50" dir={dir}>
+    <section className="py-20 bg-gray-50" dir={dir}>
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl font-bold text-amber-900 mb-4">{t("servicesTitle")}</h2>
-          <div className="w-20 h-1 bg-amber-600 mx-auto mb-6"></div>
-          <p className="text-gray-700">{t("servicesDescription")}</p>
-        </div>
+        <h2 className="text-3xl font-medium text-center mb-12">{t("servicesTitle")}</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service) => (
-            <div key={service.id} className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:transform hover:scale-105">
-              <div className="h-48 overflow-hidden">
+            <div key={service.id} className="bg-white overflow-hidden group">
+              <div className="h-64 overflow-hidden">
                 <img 
                   src={service.image} 
                   alt={service.title} 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
               <div className="p-6">
-                <div className="text-3xl mb-3">{service.icon}</div>
-                <h3 className="text-xl font-bold text-amber-900 mb-2">{service.title}</h3>
-                <p className="text-gray-700 mb-4">{service.description}</p>
-                <Link href={`/services#${service.id}`} className="text-amber-700 hover:text-amber-900 font-medium">
+                <h3 className="text-xl font-medium mb-3">{service.title}</h3>
+                <p className="text-gray-600 mb-4">{service.description}</p>
+                <Link href={`/services#${service.id}`} className="text-primary font-medium hover:underline">
                   {t("services")} →
                 </Link>
               </div>
@@ -62,7 +54,7 @@ export default function ServicesSection() {
         </div>
         
         <div className="text-center mt-12">
-          <Link href="/services" className="inline-block bg-amber-800 hover:bg-amber-700 text-white px-5 py-2 rounded-md font-medium transition-colors">
+          <Link href="/services" className="tesla-button tesla-button-primary inline-block">
             {t("services")}
           </Link>
         </div>

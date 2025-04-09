@@ -7,21 +7,31 @@ export default function Hero() {
   const { t, dir } = useLanguage();
 
   return (
-    <section className="relative bg-amber-900 text-white py-20" dir={dir}>
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-            {t("expertTitle")}
-          </h1>
-          <p className="text-lg md:text-xl mb-8">
-            {t("passionDescription")}
-          </p>
-          <Link href="/contact" className="inline-block bg-amber-600 hover:bg-amber-500 text-white px-6 py-3 rounded-md text-lg font-medium transition-colors">
+    <section 
+      className="tesla-section bg-cover bg-center bg-no-repeat" 
+      style={{ 
+        backgroundImage: "url('https://images.unsplash.com/photo-1601564921647-b446839a013f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
+        backgroundPosition: "center 30%"
+      }}
+      dir={dir}
+    >
+      <div className="absolute inset-0 bg-black/30"></div>
+      <div className="container relative z-10 text-center text-white">
+        <h1 className="tesla-heading mb-4">
+          {t("expertTitle")}
+        </h1>
+        <p className="tesla-subheading max-w-2xl mx-auto mb-8">
+          {t("passionDescription")}
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+          <Link href="/contact" className="tesla-button tesla-button-primary">
             {t("requestQuote")}
+          </Link>
+          <Link href="/services" className="tesla-button tesla-button-secondary">
+            {t("services")}
           </Link>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 w-full h-16 bg-white" style={{ clipPath: "polygon(0 100%, 100% 100%, 100% 0)" }}></div>
     </section>
   );
 }
