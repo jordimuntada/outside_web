@@ -30,42 +30,42 @@ body {
     --card-foreground: 0 0% 10%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
-    --primary: 25 5% 45%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 10%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 10%;
+    --primary: 36 43% 51%;
+    --primary-foreground: 60 56% 91%;
+    --secondary: 60 56% 91%;
+    --secondary-foreground: 36 43% 51%;
+    --muted: 60 56% 91%;
+    --muted-foreground: 36 43% 51%;
+    --accent: 60 56% 91%;
+    --accent-foreground: 36 43% 51%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 25 5% 45%;
+    --destructive-foreground: 60 56% 91%;
+    --border: 39 69% 86%;
+    --input: 39 69% 86%;
+    --ring: 36 43% 51%;
     --radius: 0;
   }
 
   .dark {
     --background: 0 0% 5%;
-    --foreground: 0 0% 98%;
+    --foreground: 60 56% 91%;
     --card: 0 0% 5%;
-    --card-foreground: 0 0% 98%;
+    --card-foreground: 60 56% 91%;
     --popover: 0 0% 5%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 25 5% 45%;
-    --primary-foreground: 0 0% 98%;
+    --popover-foreground: 60 56% 91%;
+    --primary: 36 43% 51%;
+    --primary-foreground: 60 56% 91%;
     --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary-foreground: 60 56% 91%;
     --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
+    --muted-foreground: 39 69% 86%;
     --accent: 0 0% 15%;
-    --accent-foreground: 0 0% 98%;
+    --accent-foreground: 60 56% 91%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 60 56% 91%;
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 25 5% 45%;
+    --ring: 36 43% 51%;
   }
 }
 
@@ -88,11 +88,11 @@ body {
   }
   
   .tesla-button-primary {
-    @apply bg-primary text-white hover:bg-primary/90;
+    @apply bg-[#D4A373] text-white hover:bg-[#D4A373]/90;
   }
   
   .tesla-button-secondary {
-    @apply bg-white/80 backdrop-blur-sm text-black hover:bg-white;
+    @apply bg-white/80 backdrop-blur-sm text-[#D4A373] hover:bg-white;
   }
   
   .tesla-section {

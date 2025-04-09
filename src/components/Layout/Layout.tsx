@@ -15,8 +15,8 @@ export default function Layout({ children, title, description }: LayoutProps) {
   const { dir, language } = useLanguage();
   
   const fullTitle = title 
-    ? `${title} | Outside Instalaciones` 
-    : "Outside Instalaciones - Expertos en Carpintería de Madera";
+    ? `${title} | Think Outside` 
+    : "Think Outside - Expertos en Carpintería de Madera";
   
   const metaDescription = description || 
     "Expertos en instalaciones y mantenimiento de carpintería de madera. Servicios de instalación, reparación y mantenimiento para proyectos residenciales e industriales.";
@@ -30,11 +30,11 @@ export default function Layout({ children, title, description }: LayoutProps) {
         <link rel="icon" href="/favicon.ico" />
         
         {/* Language alternates for SEO */}
-        <link rel="alternate" hrefLang="es" href={`https://outsideinstalaciones.com${language === "es" ? "" : "/es"}`} />
-        <link rel="alternate" hrefLang="ca" href={`https://outsideinstalaciones.com${language === "ca" ? "" : "/ca"}`} />
-        <link rel="alternate" hrefLang="en" href={`https://outsideinstalaciones.com${language === "en" ? "" : "/en"}`} />
-        <link rel="alternate" hrefLang="ar" href={`https://outsideinstalaciones.com${language === "ar" ? "" : "/ar"}`} />
-        <link rel="alternate" hrefLang="x-default" href="https://outsideinstalaciones.com" />
+        <link rel="alternate" hrefLang="es" href={`https://thinkoutside.com${language === "es" ? "" : "/es"}`} />
+        <link rel="alternate" hrefLang="ca" href={`https://thinkoutside.com${language === "ca" ? "" : "/ca"}`} />
+        <link rel="alternate" hrefLang="en" href={`https://thinkoutside.com${language === "en" ? "" : "/en"}`} />
+        <link rel="alternate" hrefLang="ar" href={`https://thinkoutside.com${language === "ar" ? "" : "/ar"}`} />
+        <link rel="alternate" hrefLang="x-default" href="https://thinkoutside.com" />
       </Head>
 
       <div className="flex flex-col min-h-screen">

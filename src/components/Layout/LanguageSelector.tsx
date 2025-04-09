@@ -22,8 +22,8 @@ export default function LanguageSelector() {
             onClick={() => setLanguage(lang.code)}
             className={`flex items-center px-3 py-2 rounded-md transition-colors ${
               language === lang.code
-                ? "bg-amber-800 text-white"
-                : "bg-amber-100 text-amber-900 hover:bg-amber-200"
+                ? "bg-[#D4A373] text-white"
+                : "bg-[#E9EDC9] text-[#D4A373] hover:bg-[#CCD5AE]"
             }`}
             aria-label={`Switch to ${lang.name}`}
           >
