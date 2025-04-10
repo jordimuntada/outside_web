@@ -16,7 +16,7 @@ export default function ServicesSection() {
       id: 'reparacion',
       title: 'Reparación',
       description: 'Reparación de averías relacionadas a carpintería de madera. Ofrecemos una respuesta óptima para resolver cada tipo de incidencia.',
-      image: 'https://images.pexels.com/photos/3846022/pexels-photo-3846022.jpeg?auto=compress&cs=tinysrgb&w=800'
+      image: 'https://images.pexels.com/photos/3637837/pexels-photo-3637837.jpeg?auto=compress&cs=tinysrgb&w=800'
     },
     {
       id: 'mantenimiento',
