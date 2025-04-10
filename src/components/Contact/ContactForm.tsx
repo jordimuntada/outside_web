@@ -99,7 +99,7 @@ export default function ContactForm() {
           <h3 className='text-2xl font-bold text-primary mb-4'>{t('formSuccess')}</h3>
           <button
             onClick={() => setFormStatus('idle')}
-            className='mt-4 btn btn-primary px-6 py-2 rounded-md'
+            className='mt-4 bg-primary text-white px-6 py-2 rounded-md hover:bg-primary/90'
           >
             {t('formSubmit')}
           </button>
@@ -107,7 +107,7 @@ export default function ContactForm() {
       ) : (
         <form onSubmit={handleSubmit}>
           <div className='mb-6'>
-            <label htmlFor='name' className='form-label'>
+            <label htmlFor='name' className='block text-sm font-medium text-gray-700 mb-1'>
               {t('formName')} *
             </label>
             <input
@@ -116,17 +116,17 @@ export default function ContactForm() {
               name='name'
               value={formData.name}
               onChange={handleChange}
-              className={`form-input ${
-                errors.name ? 'border-destructive focus:ring-destructive/50' : ''
-              }`}
+              className={`w-full px-3 py-2 border rounded-md ${
+                errors.name ? 'border-red-500 focus:ring-red-500/50' : 'border-gray-300 focus:ring-primary/50'
+              } focus:outline-none focus:ring-2`}
               aria-invalid={errors.name ? 'true' : 'false'}
               aria-describedby={errors.name ? 'name-error' : undefined}
             />
-            {errors.name && <p id='name-error' className='form-error'>{errors.name}</p>}
+            {errors.name && <p id='name-error' className='mt-1 text-sm text-red-600'>{errors.name}</p>}
           </div>
           
           <div className='mb-6'>
-            <label htmlFor='email' className='form-label'>
+            <label htmlFor='email' className='block text-sm font-medium text-gray-700 mb-1'>
               {t('formEmail')} *
             </label>
             <input
@@ -135,17 +135,17 @@ export default function ContactForm() {
               name='email'
               value={formData.email}
               onChange={handleChange}
-              className={`form-input ${
-                errors.email ? 'border-destructive focus:ring-destructive/50' : ''
-              }`}
+              className={`w-full px-3 py-2 border rounded-md ${
+                errors.email ? 'border-red-500 focus:ring-red-500/50' : 'border-gray-300 focus:ring-primary/50'
+              } focus:outline-none focus:ring-2`}
               aria-invalid={errors.email ? 'true' : 'false'}
               aria-describedby={errors.email ? 'email-error' : undefined}
             />
-            {errors.email && <p id='email-error' className='form-error'>{errors.email}</p>}
+            {errors.email && <p id='email-error' className='mt-1 text-sm text-red-600'>{errors.email}</p>}
           </div>
           
           <div className='mb-6'>
-            <label htmlFor='message' className='form-label'>
+            <label htmlFor='message' className='block text-sm font-medium text-gray-700 mb-1'>
               {t('formMessage')}
             </label>
             <textarea
@@ -154,7 +154,7 @@ export default function ContactForm() {
               value={formData.message}
               onChange={handleChange}
               rows={5}
-              className='form-input'
+              className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50'
             ></textarea>
           </div>
           
@@ -166,30 +166,30 @@ export default function ContactForm() {
                 name='consent'
                 checked={formData.consent}
                 onChange={handleCheckboxChange}
-                className='mt-1 h-4 w-4 text-accent focus:ring-accent border-input rounded'
+                className='mt-1 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded'
                 aria-invalid={errors.consent ? 'true' : 'false'}
                 aria-describedby={errors.consent ? 'consent-error' : undefined}
               />
-              <label htmlFor='consent' className='ml-2 text-sm text-foreground/80'>
+              <label htmlFor='consent' className='ml-2 text-sm text-gray-700'>
                 {t('formConsent')} *
               </label>
             </div>
-            {errors.consent && <p id='consent-error' className='form-error'>{errors.consent}</p>}
+            {errors.consent && <p id='consent-error' className='mt-1 text-sm text-red-600'>{errors.consent}</p>}
           </div>
           
-          <p className='text-foreground/60 text-sm mb-6'>{t('formRequired')}</p>
+          <p className='text-gray-500 text-sm mb-6'>{t('formRequired')}</p>
           
           <button
             type='submit'
             disabled={formStatus === 'submitting'}
-            className='w-full btn btn-primary px-4 py-3 rounded-md font-medium shadow-md hover:shadow-lg transition-all duration-300'
+            className='w-full bg-primary text-white px-4 py-3 rounded-md font-medium shadow-md hover:shadow-lg hover:bg-primary/90 transition-all duration-300 disabled:opacity-70'
             aria-busy={formStatus === 'submitting'}
           >
             {formStatus === 'submitting' ? '...' : t('formSubmit')}
           </button>
           
           {formStatus === 'error' && (
-            <p className='text-destructive text-center mt-4'>{t('formError')}</p>
+            <p className='text-red-600 text-center mt-4'>{t('formError')}</p>
           )}
         </form>
       )}
