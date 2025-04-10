@@ -61,9 +61,9 @@ export default function Header() {
           </nav>
 
           <div className='flex items-center'>
-            <div className='hidden md:block'>
+            {/* <div className='hidden md:block'>
               <LanguageSelector />
-            </div>
+            </div> */}
             
             <button 
               className='md:hidden text-foreground focus:outline-none focus:ring-2 focus:ring-accent rounded-md p-1'
