@@ -14,19 +14,16 @@ export default function CareersPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-3xl md:text-4xl font-bold mb-8 text-primary">
-              Únete a nuestro equipo
+              {t('careersTitle')}
             </h1>
             
             <div className="bg-secondary/10 p-8 rounded-lg border border-secondary/20 mb-10 text-left">
               <p className="text-foreground/80 text-lg mb-6">
-                En Outside Instalaciones estamos siempre buscando talentos para unirse a nuestro equipo. 
-                Si eres apasionado, comprometido y buscas crecer profesionalmente en el sector de la 
-                carpintería de madera, nos encantaría conocerte.
+                {t('careersDescription')}
               </p>
               
               <p className="text-foreground/80 text-lg mb-6">
-                Para aplicar a cualquier posición en nuestra empresa, por favor envía tu CV y una carta 
-                de presentación a la siguiente dirección de correo electrónico:
+                {t('noOpenings')}
               </p>
               
               <div className="flex items-center justify-center my-8">
@@ -35,14 +32,14 @@ export default function CareersPage() {
                   className="flex items-center text-accent font-medium text-xl hover:text-accent/80 hover:underline"
                 >
                   <Mail className="h-6 w-6 mr-2" />
-                  comercial@oitinstalaciones.com
+                  {t('email')}
                 </a>
               </div>
               
               <div className="bg-white p-6 rounded-lg border border-border mt-8">
                 <h3 className="text-xl font-medium mb-4 text-primary flex items-center">
                   <FileText className="h-5 w-5 mr-2 text-accent" />
-                  Información importante
+                  {t('formRequired')}
                 </h3>
                 <ul className="space-y-3 text-foreground/80">
                   <li className="flex items-start">
@@ -63,7 +60,7 @@ export default function CareersPage() {
             
             <div className="mt-12">
               <h2 className="text-2xl font-semibold mb-6 text-primary">
-                Beneficios de trabajar con nosotros
+                {t('joinOurTeam')}
               </h2>
               <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto text-left">
                 <div className="bg-white p-6 rounded-lg border border-border">

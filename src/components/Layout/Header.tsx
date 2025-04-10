@@ -38,25 +38,25 @@ export default function Header() {
               href='/' 
               className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/') ? 'font-medium text-accent' : ''}`}
             >
-              Inicio
+              {t('home')}
             </Link>
             <Link 
               href='/careers' 
               className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/careers') ? 'font-medium text-accent' : ''}`}
             >
-              Empleo
+              {t('careers')}
             </Link>
             <Link 
               href='/contact' 
               className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/contact') ? 'font-medium text-accent' : ''}`}
             >
-              Contacto
+              {t('contact')}
             </Link>
             <Link 
               href='/legal' 
               className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/legal') ? 'font-medium text-accent' : ''}`}
             >
-              Aviso legal
+              {t('legal')}
             </Link>
           </nav>
 
@@ -87,28 +87,28 @@ export default function Header() {
                 className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/') ? 'font-medium text-accent' : ''}`}
                 onClick={closeMenu}
               >
-                Inicio
+                {t('home')}
               </Link>
               <Link 
                 href='/careers' 
                 className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/careers') ? 'font-medium text-accent' : ''}`}
                 onClick={closeMenu}
               >
-                Empleo
+                {t('careers')}
               </Link>
               <Link 
                 href='/contact' 
                 className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/contact') ? 'font-medium text-accent' : ''}`}
                 onClick={closeMenu}
               >
-                Contacto
+                {t('contact')}
               </Link>
               <Link 
                 href='/legal' 
                 className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/legal') ? 'font-medium text-accent' : ''}`}
                 onClick={closeMenu}
               >
-                Aviso legal
+                {t('legal')}
               </Link>
               <div className='pt-2'>
                 <LanguageSelector />
