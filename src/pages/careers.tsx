@@ -1,3 +1,4 @@
+
 import React from "react";
 import Layout from "@/components/Layout/Layout";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -54,4 +55,38 @@ export default function CareersPage() {
                   </li>
                   <li className="flex items-start">
                     <div className="h-5 w-5 text-accent mr-2">•</div>
-                    <span>Especifica en el asunto del correo
+                    <span>Especifica en el asunto del correo la posición a la que aplicas</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="mt-12">
+              <h2 className="text-2xl font-semibold mb-6 text-primary">
+                Beneficios de trabajar con nosotros
+              </h2>
+              <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto text-left">
+                <div className="bg-white p-6 rounded-lg border border-border">
+                  <h3 className="font-medium mb-2 text-primary">Desarrollo profesional</h3>
+                  <p className="text-foreground/80">Oportunidades de crecimiento y formación continua</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-border">
+                  <h3 className="font-medium mb-2 text-primary">Ambiente colaborativo</h3>
+                  <p className="text-foreground/80">Equipo dinámico y comprometido con la excelencia</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-border">
+                  <h3 className="font-medium mb-2 text-primary">Proyectos diversos</h3>
+                  <p className="text-foreground/80">Trabajo en variedad de proyectos interesantes</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-border">
+                  <h3 className="font-medium mb-2 text-primary">Conciliación</h3>
+                  <p className="text-foreground/80">Equilibrio entre vida laboral y personal</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </Layout>
+  );
+}
