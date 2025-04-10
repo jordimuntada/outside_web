@@ -1,31 +1,31 @@
+
 import React, { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { contactService } from "@/services/contactService";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { quoteService } from "@/services/quoteService";
+import { serverTimestamp } from "firebase/firestore";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
 interface FormData {
-  name: string;
+  nombre: string;
   email: string;
-  message: string;
-  consent: boolean;
+  mensaje: string;
+  consentimiento: boolean;
 }
 
 interface FormErrors {
-  name?: string;
+  nombre?: string;
   email?: string;
-  consent?: string;
+  consentimiento?: string;
 }
 
 export default function ContactForm() {
   const { t } = useLanguage();
   const [formData, setFormData] = useState<FormData>({
-    name: "",
+    nombre: "",
     email: "",
-    message: "",
-    consent: false,
+    mensaje: "",
+    consentimiento: false,
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [formStatus, setFormStatus] = useState<FormStatus>("idle");
@@ -34,9 +34,9 @@ export default function ContactForm() {
     const newErrors: FormErrors = {};
     let isValid = true;
 
-    // Validate name
-    if (!formData.name.trim()) {
-      newErrors.name = t("formNameRequired");
+    // Validate nombre
+    if (!formData.nombre.trim()) {
+      newErrors.nombre = t("formNameRequired");
       isValid = false;
     }
 
@@ -49,9 +49,9 @@ export default function ContactForm() {
       isValid = false;
     }
 
-    // Validate consent
-    if (!formData.consent) {
-      newErrors.consent = t("formConsentRequired");
+    // Validate consentimiento
+    if (!formData.consentimiento) {
+      newErrors.consentimiento = t("formConsentRequired");
       isValid = false;
     }
 
@@ -89,12 +89,12 @@ export default function ContactForm() {
     setFormStatus("submitting");
     
     try {
-      // Use the contactService instead of directly using Firebase
-      const success = await contactService.submitContactForm({
-        name: formData.name,
+      // Use the quoteService to submit the form data
+      const success = await quoteService.submitQuoteRequest({
+        nombre: formData.nombre,
         email: formData.email,
-        message: formData.message,
-        consent: formData.consent
+        mensaje: formData.mensaje,
+        consentimiento: formData.consentimiento
       });
       
       if (success) {
@@ -102,10 +102,10 @@ export default function ContactForm() {
         
         // Reset form
         setFormData({
-          name: "",
+          nombre: "",
           email: "",
-          message: "",
-          consent: false,
+          mensaje: "",
+          consentimiento: false,
         });
       } else {
         setFormStatus("error");
@@ -119,10 +119,10 @@ export default function ContactForm() {
   const resetForm = () => {
     setFormStatus("idle");
     setFormData({
-      name: "",
+      nombre: "",
       email: "",
-      message: "",
-      consent: false,
+      mensaje: "",
+      consentimiento: false,
     });
     setErrors({});
   };
@@ -131,11 +131,11 @@ export default function ContactForm() {
     <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
       {formStatus === "success" ? (
         <div className="text-center py-8">
-          <div className="text-5xl mb-4 text-accent">✅</div>
+          <div className="text-5xl mb-4 text-green-500">✅</div>
           <h3 className="text-2xl font-bold text-primary mb-4">{t("formSuccess")}</h3>
           <button
             onClick={resetForm}
-            className="mt-4 bg-primary text-white px-6 py-2 rounded-md hover:bg-primary/90"
+            className="mt-4 bg-primary text-white px-6 py-2 rounded-md hover:bg-primary/90 transition-all duration-300"
           >
             {t("formSubmitAnother")}
           </button>
@@ -143,22 +143,22 @@ export default function ContactForm() {
       ) : (
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="nombre" className="block text-sm font-medium text-gray-700 mb-1">
               {t("formName")} *
             </label>
             <input
               type="text"
-              id="name"
-              name="name"
-              value={formData.name}
+              id="nombre"
+              name="nombre"
+              value={formData.nombre}
               onChange={handleChange}
               className={`w-full px-3 py-2 border rounded-md ${
-                errors.name ? "border-red-500 focus:ring-red-500/50" : "border-gray-300 focus:ring-primary/50"
+                errors.nombre ? "border-red-500 focus:ring-red-500/50" : "border-gray-300 focus:ring-primary/50"
               } focus:outline-none focus:ring-2`}
-              aria-invalid={errors.name ? "true" : "false"}
-              aria-describedby={errors.name ? "name-error" : undefined}
+              aria-invalid={errors.nombre ? "true" : "false"}
+              aria-describedby={errors.nombre ? "nombre-error" : undefined}
             />
-            {errors.name && <p id="name-error" className="mt-1 text-sm text-red-600">{errors.name}</p>}
+            {errors.nombre && <p id="nombre-error" className="mt-1 text-sm text-red-600">{errors.nombre}</p>}
           </div>
           
           <div className="mb-6">
@@ -181,13 +181,13 @@ export default function ContactForm() {
           </div>
           
           <div className="mb-6">
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="mensaje" className="block text-sm font-medium text-gray-700 mb-1">
               {t("formMessage")}
             </label>
             <textarea
-              id="message"
-              name="message"
-              value={formData.message}
+              id="mensaje"
+              name="mensaje"
+              value={formData.mensaje}
               onChange={handleChange}
               rows={5}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
@@ -198,19 +198,19 @@ export default function ContactForm() {
             <div className="flex items-start">
               <input
                 type="checkbox"
-                id="consent"
-                name="consent"
-                checked={formData.consent}
+                id="consentimiento"
+                name="consentimiento"
+                checked={formData.consentimiento}
                 onChange={handleCheckboxChange}
                 className="mt-1 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
-                aria-invalid={errors.consent ? "true" : "false"}
-                aria-describedby={errors.consent ? "consent-error" : undefined}
+                aria-invalid={errors.consentimiento ? "true" : "false"}
+                aria-describedby={errors.consentimiento ? "consentimiento-error" : undefined}
               />
-              <label htmlFor="consent" className="ml-2 text-sm text-gray-700">
+              <label htmlFor="consentimiento" className="ml-2 text-sm text-gray-700">
                 {t("formConsent")} *
               </label>
             </div>
-            {errors.consent && <p id="consent-error" className="mt-1 text-sm text-red-600">{errors.consent}</p>}
+            {errors.consentimiento && <p id="consentimiento-error" className="mt-1 text-sm text-red-600">{errors.consentimiento}</p>}
           </div>
           
           <p className="text-gray-500 text-sm mb-6">{t("formRequired")}</p>
