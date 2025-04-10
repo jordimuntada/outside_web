@@ -8,6 +8,7 @@ export type TranslationKey =
   | 'services' 
   | 'contact' 
   | 'legal' 
+  | 'careers'
   | 'requestQuote'
   | 'expertTitle'
   | 'aboutTitle'
@@ -39,7 +40,20 @@ export type TranslationKey =
   | 'formSuccess'
   | 'formInvalidEmail'
   | 'formRequiredField'
-  | 'copyright';
+  | 'copyright'
+  | 'careersTitle'
+  | 'careersDescription'
+  | 'joinOurTeam'
+  | 'currentOpenings'
+  | 'noOpenings'
+  | 'applyNow'
+  | 'jobLocation'
+  | 'jobType'
+  | 'jobRequirements'
+  | 'jobResponsibilities'
+  | 'fullTime'
+  | 'partTime'
+  | 'contract';
 
 export type Translations = {
   [key in Language]: {
@@ -55,6 +69,7 @@ export const translations: Translations = {
     services: 'Nuestros servicios',
     contact: 'Contacto',
     legal: 'Aviso legal',
+    careers: 'Empleo',
     requestQuote: 'Solicita un presupuesto',
     expertTitle: 'EXPERTOS EN INSTALACIONES Y MANTENIMIENTO DE CARPINTERÍA DE MADERA',
     aboutTitle: 'Pasión por un trabajo bien hecho',
@@ -86,7 +101,20 @@ export const translations: Translations = {
     formSuccess: '¡Gracias! Nos pondremos en contacto lo antes posible.',
     formInvalidEmail: 'La dirección de correo electrónico no es válida',
     formRequiredField: 'Este campo es obligatorio',
-    copyright: 'Outside Instalaciones y Técnicos S.L. © Copyright 2021 - Todos los derechos reservados.'
+    copyright: 'Outside Instalaciones y Técnicos S.L. © Copyright 2021 - Todos los derechos reservados.',
+    careersTitle: 'Únete a nuestro equipo',
+    careersDescription: 'En Outside Instalaciones estamos siempre buscando talentos para unirse a nuestro equipo. Si eres apasionado, comprometido y buscas crecer profesionalmente en el sector de la carpintería de madera, nos encantaría conocerte.',
+    joinOurTeam: 'Únete a nuestro equipo',
+    currentOpenings: 'Vacantes actuales',
+    noOpenings: 'Actualmente no hay vacantes disponibles. Por favor, vuelve a consultar más adelante o envíanos tu CV para futuras oportunidades.',
+    applyNow: 'Aplicar ahora',
+    jobLocation: 'Ubicación',
+    jobType: 'Tipo',
+    jobRequirements: 'Requisitos',
+    jobResponsibilities: 'Responsabilidades',
+    fullTime: 'Tiempo completo',
+    partTime: 'Tiempo parcial',
+    contract: 'Contrato'
   },
   
   // Catalan translations
@@ -96,6 +124,7 @@ export const translations: Translations = {
     services: 'Els nostres serveis',
     contact: 'Contacte',
     legal: 'Avís legal',
+    careers: 'Feina',
     requestQuote: 'Sol·licita un pressupost',
     expertTitle: 'EXPERTS EN INSTAL·LACIONS I MANTENIMENT DE FUSTERIA DE FUSTA',
     aboutTitle: 'Passió per una feina ben feta',
@@ -127,7 +156,20 @@ export const translations: Translations = {
     formSuccess: 'Gràcies! Ens posarem en contacte el més aviat possible.',
     formInvalidEmail: 'L\'adreça de correu electrònic no és vàlida',
     formRequiredField: 'Aquest camp és obligatori',
-    copyright: 'Outside Instalaciones y Técnicos S.L. © Copyright 2021 - Tots els drets reservats.'
+    copyright: 'Outside Instalaciones y Técnicos S.L. © Copyright 2021 - Tots els drets reservats.',
+    careersTitle: 'Uneix-te al nostre equip',
+    careersDescription: 'A Outside Instal·lacions estem sempre buscant talents per unir-se al nostre equip. Si ets apassionat, compromès i busques créixer professionalment en el sector de la fusteria de fusta, ens encantaria conèixer-te.',
+    joinOurTeam: 'Uneix-te al nostre equip',
+    currentOpenings: 'Vacants actuals',
+    noOpenings: 'Actualment no hi ha vacants disponibles. Si us plau, torna a consultar més endavant o envia\'ns el teu CV per a futures oportunitats.',
+    applyNow: 'Aplicar ara',
+    jobLocation: 'Ubicació',
+    jobType: 'Tipus',
+    jobRequirements: 'Requisits',
+    jobResponsibilities: 'Responsabilitats',
+    fullTime: 'Temps complet',
+    partTime: 'Temps parcial',
+    contract: 'Contracte'
   },
   
   // English translations
@@ -137,6 +179,7 @@ export const translations: Translations = {
     services: 'Our Services',
     contact: 'Contact',
     legal: 'Legal Notice',
+    careers: 'Careers',
     requestQuote: 'Request a Quote',
     expertTitle: 'EXPERTS IN WOODEN CARPENTRY INSTALLATION AND MAINTENANCE',
     aboutTitle: 'Passion for a Job Well Done',
@@ -168,7 +211,20 @@ export const translations: Translations = {
     formSuccess: 'Thank you! We will contact you as soon as possible.',
     formInvalidEmail: 'The email address is not valid',
     formRequiredField: 'This field is required',
-    copyright: 'Outside Instalaciones y Técnicos S.L. © Copyright 2021 - All rights reserved.'
+    copyright: 'Outside Instalaciones y Técnicos S.L. © Copyright 2021 - All rights reserved.',
+    careersTitle: 'Join Our Team',
+    careersDescription: 'At Outside Instalaciones, we are always looking for talented individuals to join our team. If you are passionate, committed, and looking to grow professionally in the wooden carpentry sector, we would love to meet you.',
+    joinOurTeam: 'Join Our Team',
+    currentOpenings: 'Current Openings',
+    noOpenings: 'There are currently no vacancies available. Please check back later or send us your CV for future opportunities.',
+    applyNow: 'Apply Now',
+    jobLocation: 'Location',
+    jobType: 'Type',
+    jobRequirements: 'Requirements',
+    jobResponsibilities: 'Responsibilities',
+    fullTime: 'Full Time',
+    partTime: 'Part Time',
+    contract: 'Contract'
   },
   
   // Arabic translations
@@ -178,6 +234,7 @@ export const translations: Translations = {
     services: 'خدماتنا',
     contact: 'اتصل بنا',
     legal: 'إشعار قانوني',
+    careers: 'وظائف',
     requestQuote: 'اطلب عرض سعر',
     expertTitle: 'خبراء في تركيب وصيانة النجارة الخشبية',
     aboutTitle: 'شغف بالعمل المتقن',
@@ -209,6 +266,19 @@ export const translations: Translations = {
     formSuccess: 'شكرا لك! سنتواصل معك في أقرب وقت ممكن.',
     formInvalidEmail: 'عنوان البريد الإلكتروني غير صالح',
     formRequiredField: 'هذا الحقل مطلوب',
-    copyright: 'Outside Instalaciones y Técnicos S.L. © حقوق النشر 2021 - جميع الحقوق محفوظة.'
+    copyright: 'Outside Instalaciones y Técnicos S.L. © حقوق النشر 2021 - جميع الحقوق محفوظة.',
+    careersTitle: 'انضم إلى فريقنا',
+    careersDescription: 'في Outside Instalaciones، نبحث دائمًا عن أفراد موهوبين للانضمام إلى فريقنا. إذا كنت شغوفًا وملتزمًا وتتطلع إلى النمو مهنيًا في قطاع النجارة الخشبية، فنحن نود مقابلتك.',
+    joinOurTeam: 'انضم إلى فريقنا',
+    currentOpenings: 'الوظائف الشاغرة الحالية',
+    noOpenings: 'لا توجد وظائف شاغرة متاحة حاليًا. يرجى التحقق مرة أخرى لاحقًا أو إرسال سيرتك الذاتية للفرص المستقبلية.',
+    applyNow: 'تقدم الآن',
+    jobLocation: 'الموقع',
+    jobType: 'النوع',
+    jobRequirements: 'المتطلبات',
+    jobResponsibilities: 'المسؤوليات',
+    fullTime: 'دوام كامل',
+    partTime: 'دوام جزئي',
+    contract: 'عقد'
   }
 };

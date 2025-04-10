@@ -41,6 +41,12 @@ export default function Header() {
               Inicio
             </Link>
             <Link 
+              href='/careers' 
+              className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/careers') ? 'font-medium text-accent' : ''}`}
+            >
+              Empleo
+            </Link>
+            <Link 
               href='/contact' 
               className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/contact') ? 'font-medium text-accent' : ''}`}
             >
@@ -82,6 +88,13 @@ export default function Header() {
                 onClick={closeMenu}
               >
                 Inicio
+              </Link>
+              <Link 
+                href='/careers' 
+                className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/careers') ? 'font-medium text-accent' : ''}`}
+                onClick={closeMenu}
+              >
+                Empleo
               </Link>
               <Link 
                 href='/contact' 

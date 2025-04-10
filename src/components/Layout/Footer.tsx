@@ -63,6 +63,14 @@ export default function Footer() {
               </li>
               <li>
                 <Link 
+                  href='/careers' 
+                  className='text-primary-foreground/80 hover:text-accent transition-colors duration-300'
+                >
+                  Empleo
+                </Link>
+              </li>
+              <li>
+                <Link 
                   href='/contact' 
                   className='text-primary-foreground/80 hover:text-accent transition-colors duration-300'
                 >

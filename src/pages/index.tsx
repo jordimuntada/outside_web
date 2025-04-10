@@ -4,6 +4,7 @@ import Hero from "@/components/Home/Hero";
 import AboutSection from "@/components/Home/AboutSection";
 import ServicesSection from "@/components/Home/ServicesSection";
 import CTASection from "@/components/Home/CTASection";
+import CareersSection from "@/components/Home/CareersSection";
 import ContactForm from "@/components/Contact/ContactForm";
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -15,6 +16,7 @@ export default function Home() {
       <Hero />
       <AboutSection />
       <ServicesSection />
+      <CareersSection />
       <CTASection />
       <section className='py-20 bg-white'>
         <div className='container mx-auto px-4'>
