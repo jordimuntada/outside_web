@@ -9,7 +9,7 @@ type LanguageContextType = {
   dir: "ltr" | "rtl";
 };
 
-const defaultLanguage: Language = "ca";
+const defaultLanguage: Language = "es";
 
 const LanguageContext = createContext<LanguageContextType>({
   language: defaultLanguage,
