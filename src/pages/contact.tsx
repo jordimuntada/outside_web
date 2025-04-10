@@ -22,24 +22,27 @@ export default function ContactPage() {
                   <div className='flex items-start'>
                     <Phone className='mr-3 h-6 w-6 text-accent flex-shrink-0 mt-0.5' />
                     <div>
-                      <h3 className='font-medium text-foreground'>{t('phone')}</h3>
-                      <p className='text-foreground/80'>{t('phone')}</p>
+                      <a href='tel:+34930129573' className='font-medium text-foreground hover:text-accent transition-colors duration-300'>
+                        +34 93 012 95 73
+                      </a>
                     </div>
                   </div>
                   
                   <div className='flex items-start'>
                     <Mail className='mr-3 h-6 w-6 text-accent flex-shrink-0 mt-0.5' />
                     <div>
-                      <h3 className='font-medium text-foreground'>{t('email')}</h3>
-                      <p className='text-foreground/80'>{t('email')}</p>
+                      <a href='mailto:comercial@oitinstalaciones.com' className='font-medium text-foreground hover:text-accent transition-colors duration-300'>
+                        comercial@oitinstalaciones.com
+                      </a>
                     </div>
                   </div>
                   
                   <div className='flex items-start'>
                     <MapPin className='mr-3 h-6 w-6 text-accent flex-shrink-0 mt-0.5' />
                     <div>
-                      <h3 className='font-medium text-foreground'>{t('address')}</h3>
-                      <p className='text-foreground/80'>{t('address')}</p>
+                      <span className='font-medium text-foreground'>
+                        Carrer Apol·lo 10 - 08228. Terrassa, Barcelona
+                      </span>
                     </div>
                   </div>
                 </div>

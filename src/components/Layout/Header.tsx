@@ -25,7 +25,7 @@ export default function Header() {
   return (
     <header className='bg-white shadow-sm sticky top-0 z-50' dir={dir}>
       <a href='#main-content' className='skip-to-content'>
-        Saltar al contenido principal
+        {t('home')}
       </a>
       <div className='container mx-auto px-4'>
         <div className='flex items-center justify-between h-20'>
@@ -38,19 +38,19 @@ export default function Header() {
               href='/' 
               className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/') ? 'font-medium text-accent' : ''}`}
             >
-              Inicio
+              {t('home')}
             </Link>
             <Link 
               href='/contact' 
               className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/contact') ? 'font-medium text-accent' : ''}`}
             >
-              Contacto
+              {t('contact')}
             </Link>
             <Link 
               href='/legal' 
               className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/legal') ? 'font-medium text-accent' : ''}`}
             >
-              Aviso legal
+              {t('legal')}
             </Link>
           </nav>
 
@@ -81,21 +81,21 @@ export default function Header() {
                 className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/') ? 'font-medium text-accent' : ''}`}
                 onClick={closeMenu}
               >
-                Inicio
+                {t('home')}
               </Link>
               <Link 
                 href='/contact' 
                 className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/contact') ? 'font-medium text-accent' : ''}`}
                 onClick={closeMenu}
               >
-                Contacto
+                {t('contact')}
               </Link>
               <Link 
                 href='/legal' 
                 className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/legal') ? 'font-medium text-accent' : ''}`}
                 onClick={closeMenu}
               >
-                Aviso legal
+                {t('legal')}
               </Link>
               <div className='pt-2'>
                 <LanguageSelector />
