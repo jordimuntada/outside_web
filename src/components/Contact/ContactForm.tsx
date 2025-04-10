@@ -1,8 +1,8 @@
-
 import React, { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { quoteService } from "@/services/quoteService";
 import { serverTimestamp } from "firebase/firestore";
+import { contactService } from '@/services/contactService';
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -86,33 +86,33 @@ export default function ContactForm() {
       return;
     }
     
-    setFormStatus("submitting");
+    setFormStatus('submitting');
     
     try {
-      // Use the quoteService to submit the form data
-      const success = await quoteService.submitQuoteRequest({
-        nombre: formData.nombre,
+      // Use the contactService to submit the form data
+      const success = await contactService.submitContactForm({
+        name: formData.nombre,
         email: formData.email,
-        mensaje: formData.mensaje,
-        consentimiento: formData.consentimiento
+        message: formData.mensaje,
+        consent: formData.consentimiento
       });
       
       if (success) {
-        setFormStatus("success");
+        setFormStatus('success');
         
         // Reset form
         setFormData({
-          nombre: "",
-          email: "",
-          mensaje: "",
+          nombre: '',
+          email: '',
+          mensaje: '',
           consentimiento: false,
         });
       } else {
-        setFormStatus("error");
+        setFormStatus('error');
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
-      setFormStatus("error");
+      console.error('Error submitting form:', error);
+      setFormStatus('error');
     }
   };
 
