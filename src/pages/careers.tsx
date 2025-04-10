@@ -1,4 +1,3 @@
-
 import React from "react";
 import Layout from "@/components/Layout/Layout";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -31,11 +30,11 @@ export default function CareersPage() {
               
               <div className="flex items-center justify-center my-8">
                 <a 
-                  href="mailto:rrhh@oitinstalaciones.com" 
+                  href="mailto:comercial@oitinstalaciones.com" 
                   className="flex items-center text-accent font-medium text-xl hover:text-accent/80 hover:underline"
                 >
                   <Mail className="h-6 w-6 mr-2" />
-                  rrhh@oitinstalaciones.com
+                  comercial@oitinstalaciones.com
                 </a>
               </div>
               
@@ -55,23 +54,4 @@ export default function CareersPage() {
                   </li>
                   <li className="flex items-start">
                     <div className="h-5 w-5 text-accent mr-2">•</div>
-                    <span>Especifica en el asunto del correo la posición a la que aplicas o "Candidatura espontánea"</span>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="h-5 w-5 text-accent mr-2">•</div>
-                    <span>Revisaremos tu aplicación y nos pondremos en contacto contigo si tu perfil se ajusta a nuestras necesidades</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <p className="text-foreground/70 text-base">
-              Gracias por tu interés en formar parte de Outside Instalaciones. 
-              Valoramos todas las aplicaciones recibidas.
-            </p>
-          </div>
-        </div>
-      </section>
-    </Layout>
-  );
-}
+                    <span>Especifica en el asunto del correo
