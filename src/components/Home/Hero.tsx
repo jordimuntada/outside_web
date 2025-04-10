@@ -36,9 +36,10 @@ export default function Hero() {
             {t('expertTitle')}
 
             EXPERTOS EN INSTALACIONES Y MANTENIMIENTO DE CARPINTERÍA DE MADERA
-            Pasión por un trabajo bien hecho
             
           </h1>
+          <h2 className="text-3xl font-medium mb-6 text-primary">Pasión por un trabajo bien hecho</h2>
+          
           <div className='flex flex-col md:flex-row justify-center items-center gap-4 mt-10 animate-fade-in-up animate-delay-400'>
             <Link 
               href='/contact' 
