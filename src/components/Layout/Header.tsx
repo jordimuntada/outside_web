@@ -38,19 +38,19 @@ export default function Header() {
               href='/' 
               className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/') ? 'font-medium text-accent' : ''}`}
             >
-              {t('home')}
+              Inicio
             </Link>
             <Link 
               href='/contact' 
               className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/contact') ? 'font-medium text-accent' : ''}`}
             >
-              {t('contact')}
+              Contacto
             </Link>
             <Link 
               href='/legal' 
               className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/legal') ? 'font-medium text-accent' : ''}`}
             >
-              {t('legal')}
+              Aviso legal
             </Link>
           </nav>
 
@@ -81,21 +81,21 @@ export default function Header() {
                 className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/') ? 'font-medium text-accent' : ''}`}
                 onClick={closeMenu}
               >
-                {t('home')}
+                Inicio
               </Link>
               <Link 
                 href='/contact' 
                 className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/contact') ? 'font-medium text-accent' : ''}`}
                 onClick={closeMenu}
               >
-                {t('contact')}
+                Contacto
               </Link>
               <Link 
                 href='/legal' 
                 className={`text-foreground hover:text-accent transition-colors duration-300 ${isActive('/legal') ? 'font-medium text-accent' : ''}`}
                 onClick={closeMenu}
               >
-                {t('legal')}
+                Aviso legal
               </Link>
               <div className='pt-2'>
                 <LanguageSelector />

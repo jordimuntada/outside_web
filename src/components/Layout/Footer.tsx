@@ -16,12 +16,12 @@ export default function Footer() {
           <div>
             <h3 className='text-xl font-medium mb-4 text-secondary'>Outside Instalaciones</h3>
             <p className='text-primary-foreground/80 mb-4'>
-              {t('expertTitle')}
+              EXPERTOS EN INSTALACIONES Y MANTENIMIENTO DE CARPINTERÍA DE MADERA
             </p>
           </div>
           
           <div>
-            <h3 className='text-xl font-medium mb-4 text-secondary'>{t('contactInfo')}</h3>
+            <h3 className='text-xl font-medium mb-4 text-secondary'>Información de contacto</h3>
             <ul className='space-y-3'>
               <li className='flex items-start'>
                 <Phone className='mr-2 h-5 w-5 text-accent flex-shrink-0 mt-0.5' />
@@ -30,7 +30,7 @@ export default function Footer() {
                   className='hover:text-accent transition-colors duration-300'
                   aria-label='Llamar por teléfono'
                 >
-                  {t('phone')}
+                  +34 93 012 95 73
                 </a>
               </li>
               <li className='flex items-start'>
@@ -40,25 +40,25 @@ export default function Footer() {
                   className='hover:text-accent transition-colors duration-300'
                   aria-label='Enviar email'
                 >
-                  {t('email')}
+                  comercial@oitinstalaciones.com
                 </a>
               </li>
               <li className='flex items-start'>
                 <MapPin className='mr-2 h-5 w-5 text-accent flex-shrink-0 mt-0.5' />
-                <span>{t('address')}</span>
+                <span>Carrer Apol·lo 10 - 08228. Terrassa, Barcelona</span>
               </li>
             </ul>
           </div>
           
           <div>
-            <h3 className='text-xl font-medium mb-4 text-secondary'>{t('home')}</h3>
+            <h3 className='text-xl font-medium mb-4 text-secondary'>Enlaces</h3>
             <ul className='space-y-2'>
               <li>
                 <Link 
                   href='/' 
                   className='text-primary-foreground/80 hover:text-accent transition-colors duration-300'
                 >
-                  {t('home')}
+                  Inicio
                 </Link>
               </li>
               <li>
@@ -66,7 +66,7 @@ export default function Footer() {
                   href='/contact' 
                   className='text-primary-foreground/80 hover:text-accent transition-colors duration-300'
                 >
-                  {t('contact')}
+                  Contacto
                 </Link>
               </li>
               <li>
@@ -74,7 +74,7 @@ export default function Footer() {
                   href='/legal' 
                   className='text-primary-foreground/80 hover:text-accent transition-colors duration-300'
                 >
-                  {t('legal')}
+                  Aviso legal
                 </Link>
               </li>
             </ul>
@@ -83,7 +83,7 @@ export default function Footer() {
         
         {/* Copyright - minimal version */}
         <div className='border-t border-primary-foreground/20 mt-10 pt-6 text-center text-primary-foreground/60'>
-          <p>{t('copyright')}</p>
+          <p>Outside Instalaciones y Técnicos S.L. © Copyright 2021 - Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

@@ -32,14 +32,14 @@ export default function Hero() {
       <div className={`container relative z-10 text-center ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}>
         <div className='max-w-4xl mx-auto px-4 py-16'>
           <h1 className='text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-white animate-fade-in-up'>
-            {t('expertTitle')}
+            EXPERTOS EN INSTALACIONES Y MANTENIMIENTO DE CARPINTERÍA DE MADERA
           </h1>
           <div className='flex justify-center mt-10 animate-fade-in-up animate-delay-400'>
             <Link 
               href='/contact' 
               className='btn btn-primary px-6 py-3 text-base rounded-md shadow-lg hover:shadow-xl transition-all duration-300'
             >
-              {t('requestQuote')}
+              Solicita un presupuesto
             </Link>
           </div>
         </div>

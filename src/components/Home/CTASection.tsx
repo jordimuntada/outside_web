@@ -15,12 +15,12 @@ export default function CTASection() {
     >
       <div className='absolute inset-0 bg-primary/70'></div>
       <div className='container mx-auto px-4 relative z-10 text-center'>
-        <h2 className='text-3xl md:text-4xl font-medium mb-6 text-white'>{t('passionTitle')}</h2>
+        <h2 className='text-3xl md:text-4xl font-medium mb-6 text-white'>Pasión por un trabajo bien hecho</h2>
         <Link 
           href='/contact' 
           className='btn btn-outline bg-transparent border-2 border-white text-white hover:bg-white/10 px-6 py-3 text-base rounded-md shadow-lg transition-all duration-300'
         >
-          {t('requestQuote')}
+          Solicita un presupuesto
         </Link>
       </div>
     </section>
