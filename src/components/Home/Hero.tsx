@@ -32,7 +32,10 @@ export default function Hero() {
       <div className={`container relative z-10 text-center ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}>
         <div className='max-w-4xl mx-auto px-4 py-16'>
           <h1 className='text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-white animate-fade-in-up'>
+          {console.log("exxxxppppp ====", t('expertTitle'))}
             {t('expertTitle')}
+
+            
           </h1>
           <div className='flex flex-col md:flex-row justify-center items-center gap-4 mt-10 animate-fade-in-up animate-delay-400'>
             <Link 
