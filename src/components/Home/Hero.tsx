@@ -46,12 +46,14 @@ export default function Hero() {
               className='btn btn-primary px-6 py-3 text-base rounded-md shadow-lg hover:shadow-xl transition-all duration-300 bg-accent text-white'
             >
               {t('requestQuote')}
+              Pide un presupuesto
             </Link>
             <Link 
               href='/careers' 
               className='btn btn-secondary px-6 py-3 text-base rounded-md shadow-lg hover:shadow-xl transition-all duration-300 bg-white text-primary'
             >
               {t('workWithUs')}
+              Trabaja con nosotros
             </Link>
           </div>
         </div>
