@@ -32,6 +32,7 @@ export default function CareersSection() {
                 href="mailto:comercial@oitinstalaciones.com" 
                 className="flex items-center text-accent font-medium text-lg hover:text-accent/80 hover:underline"
               >
+                comercial@oitinstalaciones.com
                 <Mail className="h-5 w-5 mr-2" />
                 comercial@oitinstalaciones.com
               </a>
