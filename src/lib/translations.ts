@@ -53,7 +53,8 @@ export type TranslationKey =
   | 'jobResponsibilities'
   | 'fullTime'
   | 'partTime'
-  | 'contract';
+  | 'contract'
+  | 'workWithUs';
 
 export type Translations = {
   [key in Language]: {
@@ -114,7 +115,8 @@ export const translations: Translations = {
     jobResponsibilities: 'Responsabilidades',
     fullTime: 'Tiempo completo',
     partTime: 'Tiempo parcial',
-    contract: 'Contrato'
+    contract: 'Contrato',
+    workWithUs: 'Trabaja con nosotros'
   },
   
   // Catalan translations
@@ -169,7 +171,8 @@ export const translations: Translations = {
     jobResponsibilities: 'Responsabilitats',
     fullTime: 'Temps complet',
     partTime: 'Temps parcial',
-    contract: 'Contracte'
+    contract: 'Contracte',
+    workWithUs: 'Treballa amb nosaltres'
   },
   
   // English translations
@@ -224,7 +227,8 @@ export const translations: Translations = {
     jobResponsibilities: 'Responsibilities',
     fullTime: 'Full Time',
     partTime: 'Part Time',
-    contract: 'Contract'
+    contract: 'Contract',
+    workWithUs: 'Work with us'
   },
   
   // Arabic translations
@@ -279,6 +283,7 @@ export const translations: Translations = {
     jobResponsibilities: 'المسؤوليات',
     fullTime: 'دوام كامل',
     partTime: 'دوام جزئي',
-    contract: 'عقد'
+    contract: 'عقد',
+    workWithUs: 'اعمل معنا'
   }
 };

@@ -34,12 +34,18 @@ export default function Hero() {
           <h1 className='text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-white animate-fade-in-up'>
             {t('expertTitle')}
           </h1>
-          <div className='flex justify-center mt-10 animate-fade-in-up animate-delay-400'>
+          <div className='flex flex-col md:flex-row justify-center items-center gap-4 mt-10 animate-fade-in-up animate-delay-400'>
             <Link 
               href='/contact' 
-              className='btn btn-primary px-6 py-3 text-base rounded-md shadow-lg hover:shadow-xl transition-all duration-300'
+              className='btn btn-primary px-6 py-3 text-base rounded-md shadow-lg hover:shadow-xl transition-all duration-300 bg-accent text-white'
             >
               {t('requestQuote')}
+            </Link>
+            <Link 
+              href='/careers' 
+              className='btn btn-secondary px-6 py-3 text-base rounded-md shadow-lg hover:shadow-xl transition-all duration-300 bg-white text-primary'
+            >
+              {t('workWithUs')}
             </Link>
           </div>
         </div>
