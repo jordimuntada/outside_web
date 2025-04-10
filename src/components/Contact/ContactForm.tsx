@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { contactService } from "@/services/contactService";
 
 export default function ContactForm() {
   const { t, dir } = useLanguage();
@@ -34,17 +35,17 @@ export default function ContactForm() {
     } = {};
     
     if (!formData.name.trim()) {
-      newErrors.name = 'Este campo es obligatorio';
+      newErrors.name = t('formRequiredField');
     }
     
     if (!formData.email.trim()) {
-      newErrors.email = 'Este campo es obligatorio';
+      newErrors.email = t('formRequiredField');
     } else if (!validateEmail(formData.email)) {
-      newErrors.email = 'La dirección de correo electrónico no es válida';
+      newErrors.email = t('formInvalidEmail');
     }
     
     if (!formData.consent) {
-      newErrors.consent = 'Este campo es obligatorio';
+      newErrors.consent = t('formRequiredField');
     }
     
     setErrors(newErrors);
@@ -70,13 +71,22 @@ export default function ContactForm() {
     
     setFormStatus('submitting');
     
-    // Simulate form submission
     try {
-      // In a real application, you would send the form data to your backend
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setFormStatus('success');
-      setFormData({ name: '', email: '', message: '', consent: false });
+      // Submit form data to the contact service
+      const success = await contactService.submitContactForm({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message
+      });
+      
+      if (success) {
+        setFormStatus('success');
+        setFormData({ name: '', email: '', message: '', consent: false });
+      } else {
+        setFormStatus('error');
+      }
     } catch (error) {
+      console.error('Error submitting form:', error);
       setFormStatus('error');
     }
   };
@@ -86,19 +96,19 @@ export default function ContactForm() {
       {formStatus === 'success' ? (
         <div className='text-center py-8'>
           <div className='text-5xl mb-4 text-accent'>✅</div>
-          <h3 className='text-2xl font-bold text-primary mb-4'>¡Gracias! Nos pondremos en contacto lo antes posible.</h3>
+          <h3 className='text-2xl font-bold text-primary mb-4'>{t('formSuccess')}</h3>
           <button
             onClick={() => setFormStatus('idle')}
             className='mt-4 btn btn-primary px-6 py-2 rounded-md'
           >
-            Solicitar presupuesto
+            {t('formSubmit')}
           </button>
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
           <div className='mb-6'>
             <label htmlFor='name' className='form-label'>
-              Nombre *
+              {t('formName')} *
             </label>
             <input
               type='text'
@@ -117,7 +127,7 @@ export default function ContactForm() {
           
           <div className='mb-6'>
             <label htmlFor='email' className='form-label'>
-              Email *
+              {t('formEmail')} *
             </label>
             <input
               type='email'
@@ -136,7 +146,7 @@ export default function ContactForm() {
           
           <div className='mb-6'>
             <label htmlFor='message' className='form-label'>
-              Mensaje
+              {t('formMessage')}
             </label>
             <textarea
               id='message'
@@ -161,13 +171,13 @@ export default function ContactForm() {
                 aria-describedby={errors.consent ? 'consent-error' : undefined}
               />
               <label htmlFor='consent' className='ml-2 text-sm text-foreground/80'>
-                Estoy de acuerdo en que estos datos se almacenen y procesen con el fin de establecer contacto. Soy consciente de que puedo revocar mi consentimiento en cualquier momento. *
+                {t('formConsent')} *
               </label>
             </div>
             {errors.consent && <p id='consent-error' className='form-error'>{errors.consent}</p>}
           </div>
           
-          <p className='text-foreground/60 text-sm mb-6'>* Indica los campos obligatorios</p>
+          <p className='text-foreground/60 text-sm mb-6'>{t('formRequired')}</p>
           
           <button
             type='submit'
@@ -175,11 +185,11 @@ export default function ContactForm() {
             className='w-full btn btn-primary px-4 py-3 rounded-md font-medium shadow-md hover:shadow-lg transition-all duration-300'
             aria-busy={formStatus === 'submitting'}
           >
-            {formStatus === 'submitting' ? '...' : 'Solicitar presupuesto'}
+            {formStatus === 'submitting' ? '...' : t('formSubmit')}
           </button>
           
           {formStatus === 'error' && (
-            <p className='text-destructive text-center mt-4'>Hubo un error al enviar su mensaje. Por favor, inténtelo de nuevo.</p>
+            <p className='text-destructive text-center mt-4'>{t('formError')}</p>
           )}
         </form>
       )}
