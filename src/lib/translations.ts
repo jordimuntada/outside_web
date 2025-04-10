@@ -36,8 +36,14 @@ export type TranslationKey =
   | 'formConsent'
   | 'formRequired'
   | 'formSubmit'
+  | 'formSubmitting'
   | 'formError'
   | 'formSuccess'
+  | 'formSubmitAnother'
+  | 'formNameRequired'
+  | 'formEmailRequired'
+  | 'formEmailInvalid'
+  | 'formConsentRequired'
   | 'formInvalidEmail'
   | 'formRequiredField'
   | 'copyright'
@@ -98,8 +104,14 @@ export const translations: Translations = {
     formConsent: 'Estoy de acuerdo en que estos datos se almacenen y procesen con el fin de establecer contacto. Soy consciente de que puedo revocar mi consentimiento en cualquier momento.',
     formRequired: '* Indica los campos obligatorios',
     formSubmit: 'Solicitar presupuesto',
+    formSubmitting: 'Enviando...',
     formError: 'Hubo un error al enviar su mensaje. Por favor, inténtelo de nuevo.',
     formSuccess: '¡Gracias! Nos pondremos en contacto lo antes posible.',
+    formSubmitAnother: 'Enviar otro mensaje',
+    formNameRequired: 'Por favor, introduce tu nombre',
+    formEmailRequired: 'Por favor, introduce tu email',
+    formEmailInvalid: 'La dirección de correo electrónico no es válida',
+    formConsentRequired: 'Debes aceptar los términos para continuar',
     formInvalidEmail: 'La dirección de correo electrónico no es válida',
     formRequiredField: 'Este campo es obligatorio',
     copyright: 'Outside Instalaciones y Técnicos S.L. © Copyright 2021 - Todos los derechos reservados.',
@@ -154,8 +166,14 @@ export const translations: Translations = {
     formConsent: 'Estic d\'acord que aquestes dades s\'emmagatzemin i processin amb la finalitat d\'establir contacte. Sóc conscient que puc revocar el meu consentiment en qualsevol moment.',
     formRequired: '* Indica els camps obligatoris',
     formSubmit: 'Sol·licitar pressupost',
+    formSubmitting: 'Enviant...',
     formError: 'Hi ha hagut un error en enviar el seu missatge. Si us plau, intenti-ho de nou.',
     formSuccess: 'Gràcies! Ens posarem en contacte el més aviat possible.',
+    formSubmitAnother: 'Enviar un altre missatge',
+    formNameRequired: 'Si us plau, introdueix el teu nom',
+    formEmailRequired: 'Si us plau, introdueix el teu email',
+    formEmailInvalid: 'L\'adreça de correu electrònic no és vàlida',
+    formConsentRequired: 'Has d\'acceptar els termes per continuar',
     formInvalidEmail: 'L\'adreça de correu electrònic no és vàlida',
     formRequiredField: 'Aquest camp és obligatori',
     copyright: 'Outside Instalaciones y Técnicos S.L. © Copyright 2021 - Tots els drets reservats.',
@@ -210,8 +228,14 @@ export const translations: Translations = {
     formConsent: 'I agree that this data will be stored and processed for the purpose of establishing contact. I am aware that I can revoke my consent at any time.',
     formRequired: '* Indicates required fields',
     formSubmit: 'Request Quote',
+    formSubmitting: 'Sending...',
     formError: 'There was an error sending your message. Please try again.',
     formSuccess: 'Thank you! We will contact you as soon as possible.',
+    formSubmitAnother: 'Send another message',
+    formNameRequired: 'Please enter your name',
+    formEmailRequired: 'Please enter your email',
+    formEmailInvalid: 'The email address is not valid',
+    formConsentRequired: 'You must accept the terms to continue',
     formInvalidEmail: 'The email address is not valid',
     formRequiredField: 'This field is required',
     copyright: 'Outside Instalaciones y Técnicos S.L. © Copyright 2021 - All rights reserved.',
@@ -266,8 +290,14 @@ export const translations: Translations = {
     formConsent: 'أوافق على تخزين ومعالجة هذه البيانات لغرض إنشاء اتصال. أنا أدرك أنه يمكنني إلغاء موافقتي في أي وقت.',
     formRequired: '* يشير إلى الحقول المطلوبة',
     formSubmit: 'طلب عرض سعر',
+    formSubmitting: 'جاري الإرسال...',
     formError: 'حدث خطأ أثناء إرسال رسالتك. يرجى المحاولة مرة أخرى.',
     formSuccess: 'شكرا لك! سنتواصل معك في أقرب وقت ممكن.',
+    formSubmitAnother: 'إرسال رسالة أخرى',
+    formNameRequired: 'الرجاء إدخال اسمك',
+    formEmailRequired: 'الرجاء إدخال بريدك الإلكتروني',
+    formEmailInvalid: 'عنوان البريد الإلكتروني غير صالح',
+    formConsentRequired: 'يجب عليك قبول الشروط للمتابعة',
     formInvalidEmail: 'عنوان البريد الإلكتروني غير صالح',
     formRequiredField: 'هذا الحقل مطلوب',
     copyright: 'Outside Instalaciones y Técnicos S.L. © حقوق النشر 2021 - جميع الحقوق محفوظة.',

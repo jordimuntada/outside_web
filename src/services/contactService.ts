@@ -1,35 +1,30 @@
 
-// Mock service for contact form submissions
-// This will be replaced with Firebase implementation when Firebase is connected
+import { collection, addDoc, getDocs, query, orderBy, Timestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 export interface ContactFormData {
   name: string;
   email: string;
   message: string;
+  consent: boolean;
   date: Date;
 }
 
-class ContactService {
-  // Store submissions in memory (will be replaced with Firebase)
-  private submissions: ContactFormData[] = [];
+export interface ContactSubmission extends Omit<ContactFormData, "date"> {
+  date: Timestamp;
+}
 
-  // Submit contact form data
+class ContactService {
+  private readonly COLLECTION_NAME = "contactSubmissions";
+  
+  // Submit contact form data to Firestore
   async submitContactForm(data: Omit<ContactFormData, "date">): Promise<boolean> {
     try {
-      // Simulate network delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Add submission with current date
-      const submission: ContactFormData = {
+      // Add document to Firestore with current date
+      await addDoc(collection(db, this.COLLECTION_NAME), {
         ...data,
-        date: new Date()
-      };
-      
-      // Store in memory (will be replaced with Firestore)
-      this.submissions.push(submission);
-      
-      // Log submission (for development purposes)
-      console.log("Contact form submission:", submission);
+        date: Timestamp.now()
+      });
       
       return true;
     } catch (error) {
@@ -38,9 +33,27 @@ class ContactService {
     }
   }
 
-  // Get all submissions (for testing purposes)
-  getSubmissions(): ContactFormData[] {
-    return [...this.submissions];
+  // Get all submissions (for admin purposes)
+  async getSubmissions(): Promise<ContactSubmission[]> {
+    try {
+      const q = query(
+        collection(db, this.COLLECTION_NAME),
+        orderBy("date", "desc")
+      );
+      
+      const querySnapshot = await getDocs(q);
+      
+      return querySnapshot.docs.map(doc => {
+        const data = doc.data() as ContactSubmission;
+        return {
+          ...data,
+          id: doc.id
+        };
+      });
+    } catch (error) {
+      console.error("Error fetching contact submissions:", error);
+      return [];
+    }
   }
 }
 

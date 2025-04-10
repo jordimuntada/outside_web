@@ -1,103 +1,234 @@
-{formStatus === 'success' ? (
-        <div className='text-center py-8'>
-          <div className='text-5xl mb-4 text-accent'>✅</div>
-          <h3 className='text-2xl font-bold text-primary mb-4'>{t('formSuccess')}</h3>
+import React, { useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { contactService } from "@/services/contactService";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+
+type FormStatus = "idle" | "submitting" | "success" | "error";
+
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+  consent: boolean;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  consent?: string;
+}
+
+export default function ContactForm() {
+  const { t } = useLanguage();
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    message: "",
+    consent: false,
+  });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [formStatus, setFormStatus] = useState<FormStatus>("idle");
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+    let isValid = true;
+
+    // Validate name
+    if (!formData.name.trim()) {
+      newErrors.name = t("formNameRequired");
+      isValid = false;
+    }
+
+    // Validate email
+    if (!formData.email.trim()) {
+      newErrors.email = t("formEmailRequired");
+      isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = t("formEmailInvalid");
+      isValid = false;
+    }
+
+    // Validate consent
+    if (!formData.consent) {
+      newErrors.consent = t("formConsentRequired");
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    
+    // Clear error for this field if it exists
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: checked }));
+    
+    // Clear error for this field if it exists
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+    
+    setFormStatus("submitting");
+    
+    try {
+      // Use the contactService instead of directly using Firebase
+      const success = await contactService.submitContactForm({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        consent: formData.consent
+      });
+      
+      if (success) {
+        setFormStatus("success");
+        
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+          consent: false,
+        });
+      } else {
+        setFormStatus("error");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setFormStatus("error");
+    }
+  };
+
+  const resetForm = () => {
+    setFormStatus("idle");
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+      consent: false,
+    });
+    setErrors({});
+  };
+
+  return (
+    <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+      {formStatus === "success" ? (
+        <div className="text-center py-8">
+          <div className="text-5xl mb-4 text-accent">✅</div>
+          <h3 className="text-2xl font-bold text-primary mb-4">{t("formSuccess")}</h3>
           <button
-            onClick={() => setFormStatus('idle')}
-            className='mt-4 bg-primary text-white px-6 py-2 rounded-md hover:bg-primary/90'
+            onClick={resetForm}
+            className="mt-4 bg-primary text-white px-6 py-2 rounded-md hover:bg-primary/90"
           >
-            {t('formSubmit')}
+            {t("formSubmitAnother")}
           </button>
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
-          <div className='mb-6'>
-            <label htmlFor='name' className='block text-sm font-medium text-gray-700 mb-1'>
-              {t('formName')} *
+          <div className="mb-6">
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+              {t("formName")} *
             </label>
             <input
-              type='text'
-              id='name'
-              name='name'
+              type="text"
+              id="name"
+              name="name"
               value={formData.name}
               onChange={handleChange}
               className={`w-full px-3 py-2 border rounded-md ${
-                errors.name ? 'border-red-500 focus:ring-red-500/50' : 'border-gray-300 focus:ring-primary/50'
+                errors.name ? "border-red-500 focus:ring-red-500/50" : "border-gray-300 focus:ring-primary/50"
               } focus:outline-none focus:ring-2`}
-              aria-invalid={errors.name ? 'true' : 'false'}
-              aria-describedby={errors.name ? 'name-error' : undefined}
+              aria-invalid={errors.name ? "true" : "false"}
+              aria-describedby={errors.name ? "name-error" : undefined}
             />
-            {errors.name && <p id='name-error' className='mt-1 text-sm text-red-600'>{errors.name}</p>}
+            {errors.name && <p id="name-error" className="mt-1 text-sm text-red-600">{errors.name}</p>}
           </div>
           
-          <div className='mb-6'>
-            <label htmlFor='email' className='block text-sm font-medium text-gray-700 mb-1'>
-              {t('formEmail')} *
+          <div className="mb-6">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              {t("formEmail")} *
             </label>
             <input
-              type='email'
-              id='email'
-              name='email'
+              type="email"
+              id="email"
+              name="email"
               value={formData.email}
               onChange={handleChange}
               className={`w-full px-3 py-2 border rounded-md ${
-                errors.email ? 'border-red-500 focus:ring-red-500/50' : 'border-gray-300 focus:ring-primary/50'
+                errors.email ? "border-red-500 focus:ring-red-500/50" : "border-gray-300 focus:ring-primary/50"
               } focus:outline-none focus:ring-2`}
-              aria-invalid={errors.email ? 'true' : 'false'}
-              aria-describedby={errors.email ? 'email-error' : undefined}
+              aria-invalid={errors.email ? "true" : "false"}
+              aria-describedby={errors.email ? "email-error" : undefined}
             />
-            {errors.email && <p id='email-error' className='mt-1 text-sm text-red-600'>{errors.email}</p>}
+            {errors.email && <p id="email-error" className="mt-1 text-sm text-red-600">{errors.email}</p>}
           </div>
           
-          <div className='mb-6'>
-            <label htmlFor='message' className='block text-sm font-medium text-gray-700 mb-1'>
-              {t('formMessage')}
+          <div className="mb-6">
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+              {t("formMessage")}
             </label>
             <textarea
-              id='message'
-              name='message'
+              id="message"
+              name="message"
               value={formData.message}
               onChange={handleChange}
               rows={5}
-              className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50'
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
             ></textarea>
           </div>
           
-          <div className='mb-6'>
-            <div className='flex items-start'>
+          <div className="mb-6">
+            <div className="flex items-start">
               <input
-                type='checkbox'
-                id='consent'
-                name='consent'
+                type="checkbox"
+                id="consent"
+                name="consent"
                 checked={formData.consent}
                 onChange={handleCheckboxChange}
-                className='mt-1 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded'
-                aria-invalid={errors.consent ? 'true' : 'false'}
-                aria-describedby={errors.consent ? 'consent-error' : undefined}
+                className="mt-1 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+                aria-invalid={errors.consent ? "true" : "false"}
+                aria-describedby={errors.consent ? "consent-error" : undefined}
               />
-              <label htmlFor='consent' className='ml-2 text-sm text-gray-700'>
-                {t('formConsent')} *
+              <label htmlFor="consent" className="ml-2 text-sm text-gray-700">
+                {t("formConsent")} *
               </label>
             </div>
-            {errors.consent && <p id='consent-error' className='mt-1 text-sm text-red-600'>{errors.consent}</p>}
+            {errors.consent && <p id="consent-error" className="mt-1 text-sm text-red-600">{errors.consent}</p>}
           </div>
           
-          <p className='text-gray-500 text-sm mb-6'>{t('formRequired')}</p>
+          <p className="text-gray-500 text-sm mb-6">{t("formRequired")}</p>
           
           <button
-            type='submit'
-            disabled={formStatus === 'submitting'}
-            className='w-full bg-primary text-white px-4 py-3 rounded-md font-medium shadow-md hover:shadow-lg hover:bg-primary/90 transition-all duration-300 disabled:opacity-70'
-            aria-busy={formStatus === 'submitting'}
+            type="submit"
+            disabled={formStatus === "submitting"}
+            className="w-full bg-primary text-white px-4 py-3 rounded-md font-medium shadow-md hover:shadow-lg hover:bg-primary/90 transition-all duration-300 disabled:opacity-70"
+            aria-busy={formStatus === "submitting"}
           >
-            {formStatus === 'submitting' ? 'Enviando...' : t('formSubmit')}
+            {formStatus === "submitting" ? t("formSubmitting") : t("formSubmit")}
           </button>
           
-          {formStatus === 'error' && (
-            <p className='text-red-600 text-center mt-4'>{t('formError')}</p>
+          {formStatus === "error" && (
+            <p className="text-red-600 text-center mt-4">{t("formError")}</p>
           )}
         </form>
       )}
     </div>
   );
-"></update_file_sections>
+}
