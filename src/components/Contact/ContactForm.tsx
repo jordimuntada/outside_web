@@ -185,7 +185,7 @@ export default function ContactForm() {
             className='w-full bg-primary text-white px-4 py-3 rounded-md font-medium shadow-md hover:shadow-lg hover:bg-primary/90 transition-all duration-300 disabled:opacity-70'
             aria-busy={formStatus === 'submitting'}
           >
-            {formStatus === 'submitting' ? '...' : t('formSubmit')}
+            {formStatus === 'submitting' ? 'Enviando...' : t('formSubmit')}
           </button>
           
           {formStatus === 'error' && (
