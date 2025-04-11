@@ -225,6 +225,7 @@ export default function ContactForm() {
             aria-busy={formStatus === "submitting"}
           >
             {formStatus === "submitting" ? t("formSubmitting") : t("formSubmit")}
+            Enviar
           </button>
           
           {formStatus === "error" && (
