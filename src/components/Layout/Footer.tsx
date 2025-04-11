@@ -14,7 +14,7 @@ export default function Footer() {
         {/* Simple footer with minimal content */}
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
           <div>
-            <h3 className='text-xl font-medium mb-4 text-secondary'>Outside Instalaciones</h3>
+            <h3 className='text-xl font-medium mb-4 text-secondary'>Think Outside</h3>
             <p className='text-primary-foreground/80 mb-4'>
               EXPERTOS EN INSTALACIONES Y MANTENIMIENTO DE CARPINTERÍA DE MADERA
             </p>
@@ -91,7 +91,7 @@ export default function Footer() {
         
         {/* Copyright - minimal version */}
         <div className='border-t border-primary-foreground/20 mt-10 pt-6 text-center text-primary-foreground/60'>
-          <p>Outside Instalaciones y Técnicos S.L. © Copyright 2021 - Todos los derechos reservados.</p>
+          <p>Outside Instalaciones y Técnicos S.L. © Copyright 2025 - Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>
