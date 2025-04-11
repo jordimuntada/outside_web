@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { quoteService } from "@/services/quoteService";
@@ -135,7 +136,7 @@ export default function ContactForm() {
           <h3 className="text-2xl font-bold text-primary mb-4">{t("formSuccess")}</h3>
           <button
             onClick={resetForm}
-            className="mt-4 bg-primary text-white px-6 py-2 rounded-md hover:bg-primary/90 transition-all duration-300"
+            className="mt-4 bg-primary text-black font-medium px-6 py-2 rounded-md hover:bg-primary/90 transition-all duration-300"
           >
             {t("formSubmitAnother")}
           </button>
@@ -152,9 +153,10 @@ export default function ContactForm() {
               name="nombre"
               value={formData.nombre}
               onChange={handleChange}
-              className={`w-full px-3 py-2 border rounded-md ${
+              className={`w-full px-3 py-2 border rounded-md text-gray-900 ${
                 errors.nombre ? "border-red-500 focus:ring-red-500/50" : "border-gray-300 focus:ring-primary/50"
               } focus:outline-none focus:ring-2`}
+              placeholder={t("formName")}
               aria-invalid={errors.nombre ? "true" : "false"}
               aria-describedby={errors.nombre ? "nombre-error" : undefined}
             />
@@ -171,9 +173,10 @@ export default function ContactForm() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={`w-full px-3 py-2 border rounded-md ${
+              className={`w-full px-3 py-2 border rounded-md text-gray-900 ${
                 errors.email ? "border-red-500 focus:ring-red-500/50" : "border-gray-300 focus:ring-primary/50"
               } focus:outline-none focus:ring-2`}
+              placeholder={t("formEmail")}
               aria-invalid={errors.email ? "true" : "false"}
               aria-describedby={errors.email ? "email-error" : undefined}
             />
@@ -190,7 +193,8 @@ export default function ContactForm() {
               value={formData.mensaje}
               onChange={handleChange}
               rows={5}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary/50"
+              placeholder={t("formMessage")}
             ></textarea>
           </div>
           
@@ -218,7 +222,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={formStatus === "submitting"}
-            className="w-full bg-primary text-white px-4 py-3 rounded-md font-medium shadow-md hover:shadow-lg hover:bg-primary/90 transition-all duration-300 disabled:opacity-70"
+            className="w-full bg-primary text-black font-medium px-4 py-3 rounded-md shadow-md hover:shadow-lg hover:bg-primary/90 transition-all duration-300 disabled:opacity-70"
             aria-busy={formStatus === "submitting"}
           >
             {formStatus === "submitting" ? t("formSubmitting") : t("formSubmit")}
