@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { quoteService } from "@/services/quoteService";
@@ -145,7 +144,7 @@ export default function ContactForm() {
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
             <label htmlFor="nombre" className="block text-sm font-medium text-gray-700 mb-1">
-              {t("formName")} *
+              {t("formName")} Nombre
             </label>
             <input
               type="text"
@@ -165,7 +164,7 @@ export default function ContactForm() {
           
           <div className="mb-6">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-              {t("formEmail")} *
+              {t("formEmail")} Email
             </label>
             <input
               type="email"
@@ -185,7 +184,7 @@ export default function ContactForm() {
           
           <div className="mb-6">
             <label htmlFor="mensaje" className="block text-sm font-medium text-gray-700 mb-1">
-              {t("formMessage")}
+              {t("formMessage")} Mensaje
             </label>
             <textarea
               id="mensaje"
@@ -211,7 +210,7 @@ export default function ContactForm() {
                 aria-describedby={errors.consentimiento ? "consentimiento-error" : undefined}
               />
               <label htmlFor="consentimiento" className="ml-2 text-sm text-gray-700">
-                {t("formConsent")} *
+                {t("formConsent")} Consentimiento
               </label>
             </div>
             {errors.consentimiento && <p id="consentimiento-error" className="mt-1 text-sm text-red-600">{errors.consentimiento}</p>}
