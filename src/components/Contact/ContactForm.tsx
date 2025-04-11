@@ -169,9 +169,7 @@ export default function ContactForm() {
           </button>
         </div>
       ) : (
-        <h2 className="text-2xl font-bold text-primary mb-6 text-center">
-          {t("formTitle") || "Contáctanos"}
-        </h2>
+        
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
             <label htmlFor="nombre" className="block text-sm font-medium text-gray-700 mb-1">
