@@ -210,7 +210,8 @@ export default function ContactForm() {
                 aria-describedby={errors.consentimiento ? "consentimiento-error" : undefined}
               />
               <label htmlFor="consentimiento" className="ml-2 text-sm text-gray-700">
-                {t("formConsent")} Consentimiento
+                {t("formConsent")}   Estoy de acuerdo en que estos datos se almacenen y procesen con el fin de establecer contacto. Soy consciente de que puedo revocar mi consentimiento en cualquier momento.
+
               </label>
             </div>
             {errors.consentimiento && <p id="consentimiento-error" className="mt-1 text-sm text-red-600">{errors.consentimiento}</p>}
