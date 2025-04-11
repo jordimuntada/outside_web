@@ -173,7 +173,7 @@ export default function ContactForm() {
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
             <label htmlFor="nombre" className="block text-sm font-medium text-gray-700 mb-1">
-              {t("formName")} *
+              {t("formName")} Nombre
             </label>
             <input
               type="text"
@@ -193,7 +193,7 @@ export default function ContactForm() {
           
           <div className="mb-6">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-              {t("formEmail")} *
+              {t("formEmail")} Email
             </label>
             <input
               type="email"
@@ -239,7 +239,8 @@ export default function ContactForm() {
                 aria-describedby={errors.consentimiento ? "consentimiento-error" : undefined}
               />
               <label htmlFor="consentimiento" className="ml-2 text-sm text-gray-700">
-                {t("formConsent")} *
+                {t("formConsent")} Estoy de acuerdo en que estos datos se almacenen y procesen con el fin de establecer contacto. Soy consciente de que puedo revocar mi consentimiento en cualquier momento.
+
               </label>
             </div>
             {errors.consentimiento && <p id="consentimiento-error" className="mt-1 text-sm text-red-600">{errors.consentimiento}</p>}
@@ -265,6 +266,7 @@ export default function ContactForm() {
             aria-busy={formStatus === "submitting"}
           >
             {formStatus === "submitting" ? t("formSubmitting") : t("formSubmit")}
+            Enviar
           </button>
           
           {formStatus === "error" && (
