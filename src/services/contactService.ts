@@ -1,4 +1,3 @@
-
 import { collection, addDoc, getDocs, query, orderBy, Timestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
@@ -21,6 +20,9 @@ class ContactService {
   // Submit contact form data to Firestore
   async submitContactForm(data: Omit<ContactFormData, "date">): Promise<boolean> {
     try {
+      console.log("Attempting to submit to collection:", this.COLLECTION_NAME);
+      console.log("Form data:", data);
+      
       // Verify reCAPTCHA token if provided
       if (data.recaptchaToken) {
         // In a production environment, you would typically verify the token server-side
@@ -32,17 +34,21 @@ class ContactService {
         const { recaptchaToken, ...formData } = data;
         
         // Add document to Firestore with current date
-        await addDoc(collection(db, this.COLLECTION_NAME), {
+        const docRef = await addDoc(collection(db, this.COLLECTION_NAME), {
           ...formData,
           date: Timestamp.now()
         });
+        
+        console.log("Document written with ID:", docRef.id);
       } else {
         // If no token is provided, just store the data
         // This should not happen if form validation is working correctly
-        await addDoc(collection(db, this.COLLECTION_NAME), {
+        const docRef = await addDoc(collection(db, this.COLLECTION_NAME), {
           ...data,
           date: Timestamp.now()
         });
+        
+        console.log("Document written with ID:", docRef.id);
       }
       
       return true;
