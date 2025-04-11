@@ -21,7 +21,6 @@ interface FormErrors {
 }
 
 const recaptcha_key = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "";
-console.log("RECAPTHA = ", recaptcha_key)
 
 export default function ContactForm() {
   const { t } = useLanguage();
@@ -62,10 +61,10 @@ export default function ContactForm() {
     }
 
     // Validate reCAPTCHA
-    if (!recaptchaValue) {
-      newErrors.recaptcha = t("formRecaptchaRequired") || "Please verify you are not a robot";
-      isValid = false;
-    }
+    //if (!recaptchaValue) {
+    //  newErrors.recaptcha = t("formRecaptchaRequired") || "Please verify you are not a robot";
+    //  isValid = false;
+    //}
 
     setErrors(newErrors);
     return isValid;
@@ -249,7 +248,8 @@ export default function ContactForm() {
             </div>
             {errors.consentimiento && <p id="consentimiento-error" className="mt-1 text-sm text-red-600">{errors.consentimiento}</p>}
           </div>
-          
+         {/* Remove or comment out this block */}
+        {/* 
           <div className="mb-6">
             <div className="flex justify-center">
               <ReCAPTCHA
@@ -260,7 +260,7 @@ export default function ContactForm() {
             </div>
             {errors.recaptcha && <p className="mt-1 text-sm text-red-600 text-center">{errors.recaptcha}</p>}
           </div>
-          
+          */}
           <p className="text-gray-500 text-sm mb-6">{t("formRequired")}</p>
           
           <button
