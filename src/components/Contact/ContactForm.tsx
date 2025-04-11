@@ -20,8 +20,8 @@ interface FormErrors {
   recaptcha?: string;
 }
 
-const RECAPTCHA_SITE_KEY = process.env.RECAPTCHA_SITE_KEY;
-console.log("RECAPTHA = ", RECAPTCHA_SITE_KEY)
+const recaptcha_key = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "";
+console.log("RECAPTHA = ", recaptcha_key)
 
 export default function ContactForm() {
   const { t } = useLanguage();
@@ -254,7 +254,7 @@ export default function ContactForm() {
             <div className="flex justify-center">
               <ReCAPTCHA
                 ref={recaptchaRef}
-                sitekey={RECAPTCHA_SITE_KEY}
+                sitekey={recaptcha_key}
                 onChange={handleRecaptchaChange}
               />
             </div>
