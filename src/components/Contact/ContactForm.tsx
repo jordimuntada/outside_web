@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+
+import React, { useState, useRef } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { quoteService } from "@/services/quoteService";
-import { serverTimestamp } from "firebase/firestore";
 import { contactService } from '@/services/contactService';
+import ReCAPTCHA from "react-google-recaptcha";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -17,10 +17,16 @@ interface FormErrors {
   nombre?: string;
   email?: string;
   consentimiento?: string;
+  recaptcha?: string;
 }
+
+// Replace this with your actual reCAPTCHA site key
+const RECAPTCHA_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"; // This is Google's test key, replace with your actual key
 
 export default function ContactForm() {
   const { t } = useLanguage();
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
   const [formData, setFormData] = useState<FormData>({
     nombre: "",
     email: "",
@@ -55,6 +61,12 @@ export default function ContactForm() {
       isValid = false;
     }
 
+    // Validate reCAPTCHA
+    if (!recaptchaValue) {
+      newErrors.recaptcha = t("formRecaptchaRequired") || "Please verify you are not a robot";
+      isValid = false;
+    }
+
     setErrors(newErrors);
     return isValid;
   };
@@ -79,6 +91,13 @@ export default function ContactForm() {
     }
   };
 
+  const handleRecaptchaChange = (value: string | null) => {
+    setRecaptchaValue(value);
+    if (errors.recaptcha) {
+      setErrors((prev) => ({ ...prev, recaptcha: undefined }));
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -94,7 +113,8 @@ export default function ContactForm() {
         name: formData.nombre,
         email: formData.email,
         message: formData.mensaje,
-        consent: formData.consentimiento
+        consent: formData.consentimiento,
+        recaptchaToken: recaptchaValue || ""
       });
       
       if (success) {
@@ -107,6 +127,11 @@ export default function ContactForm() {
           mensaje: '',
           consentimiento: false,
         });
+        setRecaptchaValue(null);
+        // Reset reCAPTCHA
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
       } else {
         setFormStatus('error');
       }
@@ -124,6 +149,10 @@ export default function ContactForm() {
       mensaje: "",
       consentimiento: false,
     });
+    setRecaptchaValue(null);
+    if (recaptchaRef.current) {
+      recaptchaRef.current.reset();
+    }
     setErrors({});
   };
 
@@ -144,7 +173,7 @@ export default function ContactForm() {
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
             <label htmlFor="nombre" className="block text-sm font-medium text-gray-700 mb-1">
-              {t("formName")} Nombre
+              {t("formName")} *
             </label>
             <input
               type="text"
@@ -164,7 +193,7 @@ export default function ContactForm() {
           
           <div className="mb-6">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-              {t("formEmail")} Email
+              {t("formEmail")} *
             </label>
             <input
               type="email"
@@ -184,7 +213,7 @@ export default function ContactForm() {
           
           <div className="mb-6">
             <label htmlFor="mensaje" className="block text-sm font-medium text-gray-700 mb-1">
-              {t("formMessage")} Mensaje
+              {t("formMessage")}
             </label>
             <textarea
               id="mensaje"
@@ -210,11 +239,21 @@ export default function ContactForm() {
                 aria-describedby={errors.consentimiento ? "consentimiento-error" : undefined}
               />
               <label htmlFor="consentimiento" className="ml-2 text-sm text-gray-700">
-                {t("formConsent")}   Estoy de acuerdo en que estos datos se almacenen y procesen con el fin de establecer contacto. Soy consciente de que puedo revocar mi consentimiento en cualquier momento.
-
+                {t("formConsent")} *
               </label>
             </div>
             {errors.consentimiento && <p id="consentimiento-error" className="mt-1 text-sm text-red-600">{errors.consentimiento}</p>}
+          </div>
+          
+          <div className="mb-6">
+            <div className="flex justify-center">
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={RECAPTCHA_SITE_KEY}
+                onChange={handleRecaptchaChange}
+              />
+            </div>
+            {errors.recaptcha && <p className="mt-1 text-sm text-red-600 text-center">{errors.recaptcha}</p>}
           </div>
           
           <p className="text-gray-500 text-sm mb-6">{t("formRequired")}</p>
@@ -226,7 +265,6 @@ export default function ContactForm() {
             aria-busy={formStatus === "submitting"}
           >
             {formStatus === "submitting" ? t("formSubmitting") : t("formSubmit")}
-            Enviar
           </button>
           
           {formStatus === "error" && (

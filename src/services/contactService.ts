@@ -7,10 +7,11 @@ export interface ContactFormData {
   email: string;
   message: string;
   consent: boolean;
+  recaptchaToken?: string;
   date: Date;
 }
 
-export interface ContactSubmission extends Omit<ContactFormData, "date"> {
+export interface ContactSubmission extends Omit<ContactFormData, "date" | "recaptchaToken"> {
   date: Timestamp;
 }
 
@@ -20,11 +21,29 @@ class ContactService {
   // Submit contact form data to Firestore
   async submitContactForm(data: Omit<ContactFormData, "date">): Promise<boolean> {
     try {
-      // Add document to Firestore with current date
-      await addDoc(collection(db, this.COLLECTION_NAME), {
-        ...data,
-        date: Timestamp.now()
-      });
+      // Verify reCAPTCHA token if provided
+      if (data.recaptchaToken) {
+        // In a production environment, you would typically verify the token server-side
+        // For example, by calling a serverless function or API route
+        // This is a simplified implementation
+        console.log("reCAPTCHA token received:", data.recaptchaToken);
+        
+        // Remove the token before storing in Firestore
+        const { recaptchaToken, ...formData } = data;
+        
+        // Add document to Firestore with current date
+        await addDoc(collection(db, this.COLLECTION_NAME), {
+          ...formData,
+          date: Timestamp.now()
+        });
+      } else {
+        // If no token is provided, just store the data
+        // This should not happen if form validation is working correctly
+        await addDoc(collection(db, this.COLLECTION_NAME), {
+          ...data,
+          date: Timestamp.now()
+        });
+      }
       
       return true;
     } catch (error) {
