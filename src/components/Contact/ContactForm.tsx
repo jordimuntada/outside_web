@@ -21,6 +21,7 @@ interface FormErrors {
 }
 
 const RECAPTCHA_SITE_KEY = process.env.RECAPTCHA_SITE_KEY;
+console.log("RECAPTHA = ", RECAPTCHA_SITE_KEY)
 
 export default function ContactForm() {
   const { t } = useLanguage();
@@ -171,6 +172,9 @@ export default function ContactForm() {
       ) : (
         
         <form onSubmit={handleSubmit}>
+          <h2 className="text-2xl font-bold text-primary mb-6 text-center">
+            {t("formTitle") || "Contáctanos"}
+          </h2>
           <div className="mb-6">
             <label htmlFor="nombre" className="block text-sm font-medium text-gray-700 mb-1">
               {t("formName")} Nombre
