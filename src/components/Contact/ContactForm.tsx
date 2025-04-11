@@ -20,7 +20,7 @@ interface FormErrors {
   recaptcha?: string;
 }
 
-const RECAPTCHA_SITE_KEY = "AIzaSyC_GWOhY2adlpqj3dMotdQbsgxW5NgOEZM"; // This is Google's test key, replace with your actual key
+const RECAPTCHA_SITE_KEY = process.env.RECAPTCHA_SITE_KEY;
 
 export default function ContactForm() {
   const { t } = useLanguage();
