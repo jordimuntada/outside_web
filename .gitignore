@@ -27,6 +27,9 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env.local
+.env
+
 
 # vercel
 .vercel
@@ -37,3 +40,6 @@ next-env.d.ts
 
 # firebase
 firebase-service-account.json
+config/firebase-service-account.json
+
+envs.txt

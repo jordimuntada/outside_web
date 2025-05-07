@@ -1,7 +1,9 @@
 
   import * as admin from 'firebase-admin';
-  import * as serviceAccount from '../../firebase-service-account.json';
+  //import * as serviceAccount from '../../config/firebase-service-account.json';
   
+  const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY!);
+
   if (!admin.apps.length) {
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
@@ -16,3 +18,4 @@
   
   export { admin, db, auth, storage, realTimeDb };
   
+
