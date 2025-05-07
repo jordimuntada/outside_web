@@ -31,6 +31,7 @@ export type TranslationKey =
   | 'address'
   | 'schedule'
   | 'formName'
+  | 'formTitle'
   | 'formEmail'
   | 'formMessage'
   | 'formConsent'
@@ -100,6 +101,7 @@ export const translations: Translations = {
     schedule: 'Horario',
     formName: 'Nombre',
     formEmail: 'Email',
+    formTitle: 'Solicita un presupuesto',
     formMessage: 'Mensaje',
     formConsent: 'Estoy de acuerdo en que estos datos se almacenen y procesen con el fin de establecer contacto. Soy consciente de que puedo revocar mi consentimiento en cualquier momento.',
     formRequired: '* Indica los campos obligatorios',
@@ -162,6 +164,7 @@ export const translations: Translations = {
     schedule: 'Horari',
     formName: 'Nom',
     formEmail: 'Email',
+    formTitle: 'Sol·licita un pressupost',
     formMessage: 'Missatge',
     formConsent: 'Estic d\'acord que aquestes dades s\'emmagatzemin i processin amb la finalitat d\'establir contacte. Sóc conscient que puc revocar el meu consentiment en qualsevol moment.',
     formRequired: '* Indica els camps obligatoris',
@@ -224,6 +227,7 @@ export const translations: Translations = {
     schedule: 'Schedule',
     formName: 'Name',
     formEmail: 'Email',
+    formTitle: 'Request a Quote',
     formMessage: 'Message',
     formConsent: 'I agree that this data will be stored and processed for the purpose of establishing contact. I am aware that I can revoke my consent at any time.',
     formRequired: '* Indicates required fields',
@@ -286,6 +290,7 @@ export const translations: Translations = {
     schedule: 'جدول العمل',
     formName: 'الاسم',
     formEmail: 'البريد الإلكتروني',
+    formTitle: 'اطلب عرض سعر',
     formMessage: 'الرسالة',
     formConsent: 'أوافق على تخزين ومعالجة هذه البيانات لغرض إنشاء اتصال. أنا أدرك أنه يمكنني إلغاء موافقتي في أي وقت.',
     formRequired: '* يشير إلى الحقول المطلوبة',
