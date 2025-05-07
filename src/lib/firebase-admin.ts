@@ -18,6 +18,7 @@
      client_x509_cert_url: process.env.FIREBASE_CLIENT_X509_CERT_URL,
    };
 
+   console.log('in Firbase-admins.ts - serviceAccount:', serviceAccount); // Log the config to check if it's correct
 
 
 
