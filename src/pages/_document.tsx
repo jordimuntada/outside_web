@@ -10,6 +10,21 @@ export default function Document() {
           async 
           data-softgen-monitoring="true"
         />
+        {/* Google Analytics */}
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-NCY985VYZP"
+          ></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-NCY985VYZP');
+              `,
+            }}
+          />
       </Head>
       <body className="antialiased">
         <Main />
